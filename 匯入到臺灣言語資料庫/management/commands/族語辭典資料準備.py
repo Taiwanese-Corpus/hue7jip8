@@ -36,6 +36,6 @@ class Command(BaseCommand):
             sleep(randint(4, 5))
             所在 = join(語料目錄, 網址.split('/')[-1])
             urlretrieve(網址, 所在)
-            錄音檔對應[錄音檔網址] = 所在
+            錄音檔對應[網址] = 所在
         with open(join(語料目錄, '錄音檔對應.json'), 'w') as 檔案:
             json.dump(錄音檔對應, 檔案, sort_keys=True, indent=2)
