@@ -34,7 +34,7 @@ class Command(BaseCommand):
             raise RuntimeError('有仝網址的音檔')
         錄音檔對應 = {}
         for 網址 in 全部錄音檔:
-            sleep(randint(4, 5))
+            sleep(randint(10, 20))
             所在 = join(語料目錄, 網址.split('/')[-1])
             urlretrieve(quote(網址, safe='/:'), 所在)
             錄音檔對應[網址] = 所在
