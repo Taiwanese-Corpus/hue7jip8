@@ -3,6 +3,7 @@ from os import makedirs
 from os.path import join
 from random import randint
 from time import sleep
+from urllib.parse import quote
 from urllib.request import urlopen, urlretrieve
 
 from django.conf import settings
@@ -35,7 +36,7 @@ class Command(BaseCommand):
         for 網址 in 全部錄音檔:
             sleep(randint(4, 5))
             所在 = join(語料目錄, 網址.split('/')[-1])
-            urlretrieve(網址, 所在)
+            urlretrieve(quote(網址, safe='/:'), 所在)
             錄音檔對應[網址] = 所在
         with open(join(語料目錄, '錄音檔對應.json'), 'w') as 檔案:
             json.dump(錄音檔對應, 檔案, sort_keys=True, indent=2)
