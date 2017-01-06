@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    '臺灣言語資料庫',
     '匯入到臺灣言語資料庫',
 ]
 
