@@ -20,7 +20,10 @@ class Command(BaseCommand):
             # 'https://github.com/thewayiam/ami_dict_crawler/raw/master/data/data.json'
             'https://github.com/Taiwanese-Corpus/ami_dict_crawler/raw/master/data/data.json'
         ) as 資料檔案:
-            資料 = json.loads(資料檔案.read().decode('utf-8'))
+            全部資料 = 資料檔案.read().decode('utf-8')
+            資料 = json.loads(全部資料)
+        with open(join(語料目錄, 'data.json'), 'w') as 檔案:
+            檔案.write(全部資料)
         全部錄音檔 = []
         for 一筆 in 資料:
             錄音檔網址 = 一筆['pronounce']
