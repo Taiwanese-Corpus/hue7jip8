@@ -1,6 +1,6 @@
 import json
 from os import makedirs
-from os.path import join
+from os.path import join, isfile
 from random import randint
 from time import sleep
 from urllib.parse import quote
@@ -37,9 +37,19 @@ class Command(BaseCommand):
             raise RuntimeError('有仝網址的音檔')
         錄音檔對應 = {}
         for 網址 in 全部錄音檔:
-            sleep(randint(10, 20))
             所在 = join(語料目錄, 網址.split('/')[-1])
-            urlretrieve(quote(網址, safe='/:'), 所在)
+            if isfile(所在):
+                print('{} 有矣'.format(所在))
+            else:
+                while True:
+                    sleep(randint(50, 200))
+                    print('掠 {} …'.format(所在))
+                    try:
+                        urlretrieve(quote(網址, safe='/:'), 所在)
+                    except:
+                        pass
+                    else:
+                        break
             錄音檔對應[網址] = 所在
         with open(join(語料目錄, '錄音檔對應.json'), 'w') as 檔案:
             json.dump(錄音檔對應, 檔案, sort_keys=True, indent=2)
