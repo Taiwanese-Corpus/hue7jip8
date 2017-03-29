@@ -35,7 +35,6 @@ class Command(BaseCommand):
                     全部錄音檔.append(錄音檔網址)
         if len(全部錄音檔) != len(set(全部錄音檔)):
             raise RuntimeError('有仝網址的音檔')
-        錄音檔對應 = {}
         for 網址 in 全部錄音檔:
             所在 = join(語料目錄, 網址.split('/')[-1])
             if isfile(所在):
@@ -50,6 +49,3 @@ class Command(BaseCommand):
                         pass
                     else:
                         break
-            錄音檔對應[網址] = 所在
-        with open(join(語料目錄, '錄音檔對應.json'), 'w') as 檔案:
-            json.dump(錄音檔對應, 檔案, sort_keys=True, indent=2)
