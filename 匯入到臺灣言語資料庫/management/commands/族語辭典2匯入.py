@@ -1,5 +1,5 @@
 import json
-from os.path import join, splitext, basename
+from os.path import join, splitext, basename, isfile
 from urllib.parse import urlparse
 from urllib.request import urlopen
 
@@ -49,14 +49,15 @@ class Command(BaseCommand):
                     語料目錄,
                     splitext(basename(urlparse(mp3網址音檔).path))[0] + '.wav'
                 )
-                影音內容 = {'影音所在': wav音檔, '種類': 種類}
-                影音內容.update(公家內容)
-                影音 = 影音表.加資料(影音內容)
-                文本內容 = {'文本資料': 詞條, '種類': 種類}
-                文本內容.update(公家內容)
-                影音.寫文本(文本內容)
+                if isfile(wav音檔):
+                    影音內容 = {'影音所在': wav音檔, '種類': 種類}
+                    影音內容.update(公家內容)
+                    影音 = 影音表.加資料(影音內容)
+                    文本內容 = {'文本資料': 詞條, '種類': 種類}
+                    文本內容.update(公家內容)
+                    影音.寫文本(文本內容)
 
-                匯入數量 += 1
-                if 匯入數量 % 100 == 0:
-                    print('匯入數量 {}'.format(匯入數量))
+                    匯入數量 += 1
+                    if 匯入數量 % 100 == 0:
+                        print('匯入數量 {}'.format(匯入數量))
         call_command('顯示資料數量')
