@@ -49,7 +49,7 @@ class Command(BaseCommand):
                 print('{} 有矣'.format(所在))
             else:
                 while True:
-                    sleep(randint(50, 200))
+                    sleep(randint(33, 93))
                     print('掠 {} …'.format(所在))
                     try:
                         urlretrieve(quote(網址, safe='/:'), 所在)

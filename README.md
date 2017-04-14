@@ -5,7 +5,7 @@
 ## 族語
 ```
 python manage.py 族語辭典0下載
-python manage.py 族語辭典0下載 --下載幾筆 100 # 匯入100筆就好，試驗用
+python manage.py 族語辭典0下載 --下載幾筆 10 # 匯入10筆就好，試驗用
 python manage.py 族語辭典1轉檔
 python manage.py 族語辭典2匯入
 python manage.py 訓練HTS Pangcah 語者
