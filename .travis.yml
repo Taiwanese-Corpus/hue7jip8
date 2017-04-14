@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 dist: trusty
 language: python
 python:
@@ -28,11 +28,15 @@ addons:
     - libgoogle-perftools-dev
     - libxmlrpc-c++.*-dev
     - cmake
+    - csh
     - libyaml-dev
     - libxslt1-dev
     - libav-tools
     - libmp3lame0
 install:
+- sudo dpkg --add-architecture i386
+- sudo apt-get update
+- sudo apt-get install libx11-dev libx11-dev:i386
 - pip install tox
 - pip install python-coveralls
 branches:
