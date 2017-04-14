@@ -13,6 +13,14 @@ from django.core.management.base import BaseCommand
 class Command(BaseCommand):
     help = 'https://github.com/thewayiam/ami_dict_crawler'
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--下載幾筆',
+            type=int,
+            default=100000,
+            help='試驗用，免一擺全匯'
+        )
+
     def handle(self, *args, **參數):
         語料目錄 = join(settings.BASE_DIR, '族語辭典')
         makedirs(語料目錄, exist_ok=True)
@@ -35,7 +43,7 @@ class Command(BaseCommand):
                     全部錄音檔.append(錄音檔網址)
         if len(全部錄音檔) != len(set(全部錄音檔)):
             raise RuntimeError('有仝網址的音檔')
-        for 網址 in 全部錄音檔:
+        for 下載數量, 網址 in enumerate(全部錄音檔):
             所在 = join(語料目錄, 網址.split('/')[-1])
             if isfile(所在):
                 print('{} 有矣'.format(所在))
@@ -49,3 +57,5 @@ class Command(BaseCommand):
                         pass
                     else:
                         break
+            if 下載數量 == 參數['下載幾筆']:
+                break

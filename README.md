@@ -1,5 +1,6 @@
-# hue7jip8
-匯入到臺灣言語資料庫
+# 匯入到臺灣言語資料庫
+[![Build Status](https://travis-ci.org/sih4sing5hong5/hue7jip8.svg?branch=master)](https://travis-ci.org/sih4sing5hong5/hue7jip8)
+
 
 ## 族語
 ```

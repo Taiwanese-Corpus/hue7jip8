@@ -34,6 +34,7 @@ addons:
     - libav-tools
     - libmp3lame0
 install:
+- pip install tox
 - pip install python-coveralls
 branches:
   only:
