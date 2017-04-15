@@ -57,5 +57,5 @@ class Command(BaseCommand):
                         pass
                     else:
                         break
-            if 下載數量 == 參數['下載幾筆']:
+            if 下載數量 + 1 == 參數['下載幾筆']:
                 break
