@@ -48,7 +48,10 @@ class Command(BaseCommand):
                 if 錄音檔網址 is not None:
                     全部錄音檔.append(錄音檔網址)
         if len(全部錄音檔) != len(set(全部錄音檔)):
-            print('有仝網址的音檔，請檢查原始的資料有著無')
+            print(
+                '有仝網址的音檔，請檢查原始的資料有著無',
+                len(全部錄音檔), len(set(全部錄音檔))
+            )
         for 下載數量, 網址 in enumerate(全部錄音檔):
             所在 = join(語料目錄, 網址.split('/')[-1])
             if isfile(所在):
