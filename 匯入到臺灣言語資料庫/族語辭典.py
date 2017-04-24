@@ -1,5 +1,5 @@
 代碼對應 = {
-    'Pangcah': 'ami','Amis': 'ami', '阿美語': 'ami',
+    'Pangcah': 'ami', 'Amis': 'ami', '阿美語': 'ami',
     '泰雅語': 'tay',
     '排灣語': 'pwn',
     '布農語': 'bnn',
