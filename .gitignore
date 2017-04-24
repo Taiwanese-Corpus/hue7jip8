@@ -89,3 +89,7 @@ ENV/
 .ropeproject
 /族語辭典/
 /族語辭典wav/
+/語料/
+/資料庫影音檔案/
+/db.sqlite3
+/MANIFEST

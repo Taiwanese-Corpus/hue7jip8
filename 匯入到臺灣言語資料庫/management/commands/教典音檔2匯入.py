@@ -1,7 +1,9 @@
 from csv import DictReader
-from os.path import basename, join, dirname
+from os.path import basename, join, dirname, abspath
 from posix import listdir
 
+from django.conf import settings
+from django.core.management import call_command
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 
@@ -15,7 +17,6 @@ from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 im
 from 臺灣言語工具.基本物件.公用變數 import 分字符號
 from 臺灣言語工具.基本物件.公用變數 import 分詞符號
 from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
-from django.core.management import call_command
 
 
 class Command(BaseCommand):
@@ -33,10 +34,10 @@ class Command(BaseCommand):
 
         'https://github.com/g0v/moedict-data-twblg/tree/master/uni'
         詞目 = {}
-        with open(
-            dirname(__file__), '..', '..',
-            '匯入到臺灣言語資料庫', '教育部閩南語常用詞辭典', '詞目總檔.csv'
-        ) as 檔案:
+        with open(join(
+            dirname(abspath(__file__)), '..', '..',
+            '教育部閩南語常用詞辭典', '詞目總檔.csv'
+        )) as 檔案:
             for 一筆 in DictReader(檔案):
                 編號 = 一筆['主編碼'].strip()
                 漢字 = 一筆['詞目'].strip()
@@ -62,7 +63,7 @@ class Command(BaseCommand):
             '著作年': str(timezone.now().year),
             '屬性': {'語者': '王秀容'}
         }
-        音檔目錄 = '語音合成訓練範例-臺語教典/wav'
+        音檔目錄 = join(settings.BASE_DIR, '語料', '教育部閩南語常用詞辭典wav')
         匯入數量 = 0
         for 路徑 in sorted(listdir(音檔目錄)):
             音檔路徑 = join(音檔目錄, 路徑)

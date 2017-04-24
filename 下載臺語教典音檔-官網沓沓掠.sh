@@ -3,7 +3,8 @@ prog="wget"
 #prog="echo"
 log_path="log"
 
-cd 匯入到臺灣言語資料庫/教育部閩南語常用詞辭典
+DIR=語料/教育部閩南語常用詞辭典
+cd ${DIR}
 
 for i in $(seq -w 1 62000)
 do
