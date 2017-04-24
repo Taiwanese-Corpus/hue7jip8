@@ -23,8 +23,8 @@ class Command(BaseCommand):
     def handle(self, *args, **參數):
         語料目錄 = join(
             settings.BASE_DIR, '語料', '教育部閩南語常用詞辭典',
-            'twblg.dict.edu.tw','holodict_new','audio',
-            )
+            'twblg.dict.edu.tw', 'holodict_new', 'audio',
+        )
         目標目錄 = join(settings.BASE_DIR, '語料', '教育部閩南語常用詞辭典wav')
         makedirs(目標目錄, exist_ok=True)
         匯入數量 = 0
