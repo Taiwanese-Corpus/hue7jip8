@@ -9,7 +9,7 @@ python manage.py 族語辭典0下載 --下載幾筆 10 # 匯入10筆就好，試
 python manage.py 族語辭典0下載 # 完整匯入。較慢，愛五六工
 python manage.py 族語辭典1轉檔
 python manage.py 族語辭典2匯入
-python manage.py 訓練HTS Pangcah 語者
+python manage.py 訓練HTS Pangcah 族語辭典
 ```
 
 ## 閩南語
