@@ -1,3 +1,4 @@
+from os import makedirs
 from os.path import join
 from posix import listdir
 
@@ -6,15 +7,25 @@ from django.core.management.base import BaseCommand
 
 from libavwrapper.avconv import Input, Output, AVConv
 from libavwrapper.codec import AudioCodec, NO_VIDEO
-from os import makedirs
+
+
+from 匯入到臺灣言語資料庫.族語辭典 import 代碼對應
 
 
 class Command(BaseCommand):
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '語言',
+            type=str,
+            help='選擇的族語'
+        )
+
     def handle(self, *args, **參數):
         # 檢查avconv有裝無
-        語料目錄 = join(settings.BASE_DIR, '族語辭典')
-        目標目錄 = join(settings.BASE_DIR, '族語辭典wav')
+        代碼 = 代碼對應[參數['語言']]
+        語料目錄 = join(settings.BASE_DIR, '語料', '族語辭典', 代碼)
+        目標目錄 = join(settings.BASE_DIR, '語料', '族語辭典wav', 代碼)
         makedirs(目標目錄, exist_ok=True)
         for 檔名 in sorted(listdir(語料目錄)):
             if 檔名.endswith('.mp3'):
