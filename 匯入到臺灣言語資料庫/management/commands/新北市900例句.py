@@ -16,7 +16,7 @@ from 臺灣言語資料庫.資料模型 import 影音表
 
 
 class Command(BaseCommand):
-    help = 'https://github.com/Taiwanese-Corpus/Sinn1pak8tshi7_2015_900-le7ku3'
+    help = 'https://github.com/Taiwanese-Corpus/Sin1pak8tshi7_2015_900-le7ku3'
 
     公家內容 = {
         '收錄者': 來源表.objects.get_or_create(名='系統管理員')[0].編號(),
@@ -36,19 +36,19 @@ class Command(BaseCommand):
     def handle(self, *args, **參數):
         call_command('顯示資料數量')
 
-        網址 = 'https://github.com/Taiwanese-Corpus/Sinn1pak8tshi7_2015_900-le7ku3/archive/master.zip'
+        網址 = 'https://github.com/Taiwanese-Corpus/Sin1pak8tshi7_2015_900-le7ku3/archive/master.zip'
         語料目錄 = join(settings.BASE_DIR, '語料', '新北市900例句')
         makedirs(語料目錄, exist_ok=True)
         if len(listdir(語料目錄)) == 0:
             暫時檔案 = join(語料目錄, 'master.zip')
             urlretrieve(網址, 暫時檔案)
             ZipFile(暫時檔案).extractall(語料目錄)
-        音檔目錄 = join(語料目錄, 'Sinn1pak8tshi7_2015_900-le7ku3-master', '鉸好的1-150音檔')
+        音檔目錄 = join(語料目錄, 'Sin1pak8tshi7_2015_900-le7ku3-master', '鉸好的1-150音檔')
         音檔陣列 = []
         for 檔名 in sorted(listdir(音檔目錄), key=lambda 名: int(名.split('.')[0])):
             音檔陣列.append(join(音檔目錄, 檔名))
         with open(
-            join(語料目錄, 'Sinn1pak8tshi7_2015_900-le7ku3-master', 'minnan900.分詞')
+            join(語料目錄, 'Sin1pak8tshi7_2015_900-le7ku3-master', 'minnan900.分詞')
         ) as 分詞檔案:
             for 一逝分詞, 音檔路徑 in zip(分詞檔案.readlines(), 音檔陣列):
                 章物件 = 拆文分析器.分詞章物件(一逝分詞.strip())
