@@ -4,6 +4,7 @@
 會當參考服務的[文件](https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_hok8-bu7/wiki/%E5%BF%AB%E9%80%9F%E8%AA%AA%E6%98%8E#%E8%A8%93%E7%B7%B4%E8%AA%9E%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8B)
 
 ## 族語
+### [族語辭典](https://github.com/thewayiam/ami_dict_crawler)
 ```
 python manage.py 族語辭典0下載 Pangcah --下載幾筆 10 # 匯入10筆就好，試驗用
 python manage.py 族語辭典0下載 Pangcah # 完整匯入。較慢，愛五六工
@@ -23,3 +24,5 @@ python manage.py 教典音檔1轉檔 # 完整匯入
 python manage.py 教典音檔2匯入 # 完整匯入
 python manage.py 訓練HTS 臺語 王秀容
 ```
+
+### [新北市900例句](https://github.com/Taiwanese-Corpus/Sinn1pak8tshi7_2015_900-le7ku3)

@@ -1,0 +1,65 @@
+from os import makedirs
+from os.path import join
+from posix import listdir
+from urllib.request import urlretrieve
+from zipfile import ZipFile
+
+from django.conf import settings
+from django.core.management import call_command
+from django.core.management.base import BaseCommand
+
+
+from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
+from 臺灣言語資料庫.資料模型 import 來源表
+from 臺灣言語資料庫.資料模型 import 版權表
+from 臺灣言語資料庫.資料模型 import 影音表
+
+
+class Command(BaseCommand):
+    help = 'https://github.com/Taiwanese-Corpus/Sinn1pak8tshi7_2015_900-le7ku3'
+
+    公家內容 = {
+        '收錄者': 來源表.objects.get_or_create(名='系統管理員')[0].編號(),
+        '來源': (
+            來源表.objects
+            .get_or_create(名='新北市104學年度閩南語字音字形-臺語上美麗辭典揣舉例-900例句工作坊')[0]
+            .編號()
+        ),
+        '版權': 版權表.objects.get_or_create(版權='會使公開')[0].pk,
+        '種類': '字詞',
+        '語言腔口': '臺語',
+        '著作所在地': '臺灣',
+        '著作年': '2015',
+        '屬性': {'語者': '王秀容'}
+    }
+
+    def handle(self, *args, **參數):
+        call_command('顯示資料數量')
+
+        網址 = 'https://github.com/Taiwanese-Corpus/Sinn1pak8tshi7_2015_900-le7ku3/archive/master.zip'
+        語料目錄 = join(settings.BASE_DIR, '語料', '新北市900例句')
+        makedirs(語料目錄, exist_ok=True)
+        if len(listdir(語料目錄)) == 0:
+            暫時檔案 = join(語料目錄, 'master.zip')
+            urlretrieve(網址, 暫時檔案)
+            ZipFile(暫時檔案).extractall(語料目錄)
+        音檔目錄 = join(語料目錄, 'Sinn1pak8tshi7_2015_900-le7ku3-master', '鉸好的1-150音檔')
+        音檔陣列 = []
+        for 檔名 in sorted(listdir(音檔目錄), key=lambda 名: int(名.split('.')[0])):
+            音檔陣列.append(join(音檔目錄, 檔名))
+        with open(
+            join(語料目錄, 'Sinn1pak8tshi7_2015_900-le7ku3-master', 'minnan900.分詞')
+        ) as 分詞檔案:
+            for 一逝分詞, 音檔路徑 in zip(分詞檔案.readlines(), 音檔陣列):
+                章物件 = 拆文分析器.分詞章物件(一逝分詞.strip())
+                影音內容 = {'影音所在': 音檔路徑}
+                影音內容.update(self.公家內容)
+                影音 = 影音表.加資料(影音內容)
+                文本內容 = {
+                    '文本資料': 章物件.看型(),
+                    '音標資料': 章物件.看音(),
+                }
+                文本內容.update(self.公家內容)
+                影音.寫文本(文本內容)
+
+        call_command('顯示資料數量')
