@@ -26,3 +26,7 @@ python manage.py 訓練HTS 臺語 王秀容
 ```
 
 ### [新北市900例句](https://github.com/Taiwanese-Corpus/Sin1pak8tshi7_2015_900-le7ku3)
+```
+python manage.py 新北市900例句
+python manage.py 訓練HTS 臺語 王秀容
+```
