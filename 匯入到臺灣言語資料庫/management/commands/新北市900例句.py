@@ -39,7 +39,7 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            '頻率',
+            '--頻率',
             type=int,
             default=44100,
         )
