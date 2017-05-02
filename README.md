@@ -30,3 +30,4 @@ python manage.py 訓練HTS 臺語 王秀容
 python manage.py 新北市900例句 --頻率 16000 # 原始音檔頻率44100Hz
 python manage.py 訓練HTS 臺語 王秀容
 ```
+準做欲用秀容老師的聲，請配合教典做伙用，無訓練會[產生錯誤](https://github.com/sih4sing5hong5/hue7jip8/pull/7#issuecomment-298552263)

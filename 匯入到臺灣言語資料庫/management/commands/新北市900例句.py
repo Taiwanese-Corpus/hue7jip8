@@ -43,6 +43,12 @@ class Command(BaseCommand):
             type=int,
             default=44100,
         )
+        parser.add_argument(
+            '--匯入幾筆',
+            type=int,
+            default=100000,
+            help='試驗用，免一擺全匯'
+        )
 
     def handle(self, *args, **參數):
         call_command('顯示資料數量')
@@ -54,6 +60,7 @@ class Command(BaseCommand):
         if not isfile(暫時檔案):
             urlretrieve(網址, 暫時檔案)
         ZipFile(暫時檔案).extractall(語料目錄)
+        匯入數量 = 0
         with TemporaryDirectory() as 轉檔目錄:
             音檔目錄 = join(
                 語料目錄, 'Sin1pak8tshi7_2015_900-le7ku3-master', '鉸好的1-150音檔'
@@ -87,4 +94,7 @@ class Command(BaseCommand):
                     文本內容.update(self.公家內容)
                     影音.寫文本(文本內容)
 
+                    匯入數量 += 1
+                    if 匯入數量 == 參數['匯入幾筆']:
+                        break
         call_command('顯示資料數量')
