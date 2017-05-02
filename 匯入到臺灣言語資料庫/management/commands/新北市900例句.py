@@ -37,6 +37,13 @@ class Command(BaseCommand):
         '屬性': {'語者': '王秀容'}
     }
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '頻率',
+            type=int,
+            default=44100,
+        )
+
     def handle(self, *args, **參數):
         call_command('顯示資料數量')
 
@@ -55,7 +62,11 @@ class Command(BaseCommand):
             for 檔名 in sorted(listdir(音檔目錄), key=lambda 名: int(名.split('.')[0])):
                 來源 = join(音檔目錄, 檔名)
                 目標 = join(轉檔目錄, 檔名)
-                目標聲音格式 = AudioCodec('pcm_s16le').channels(1)
+                目標聲音格式 = (
+                    AudioCodec('pcm_s16le')
+                    .channels(1)
+                    .frequence(參數['頻率'])
+                )
                 原始檔案 = Input(來源)
                 網頁檔案 = Output(目標).overwrite()
                 指令 = AVConv('avconv', 原始檔案, 目標聲音格式, NO_VIDEO, 網頁檔案)
