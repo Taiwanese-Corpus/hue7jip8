@@ -1,4 +1,4 @@
 include 版本.py
 include README.md
 include LICENSE
-recursive-include 匯入到臺灣言語資料庫 *.py *.sh
+recursive-include 匯入到臺灣言語資料庫 *.py *.sh *.csv

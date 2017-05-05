@@ -50,4 +50,11 @@ setup(
     install_requires=[
         'tai5-uan5_gian5-gi2_hok8-bu7',
     ],
+    package_data={
+        '匯入到臺灣言語資料庫': [
+            '教育部閩南語常用詞辭典/下載臺語教典音檔-dropbox.sh',
+            '教育部閩南語常用詞辭典/下載臺語教典音檔-官網沓沓掠.sh',
+            '教育部閩南語常用詞辭典/詞目總檔.csv',
+        ],
+    }
 )
