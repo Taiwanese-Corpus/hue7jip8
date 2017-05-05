@@ -1,5 +1,6 @@
 # 匯入到臺灣言語資料庫
 [![Build Status](https://travis-ci.org/sih4sing5hong5/hue7jip8.svg?branch=master)](https://travis-ci.org/sih4sing5hong5/hue7jip8)
+[![Coverage Status](https://coveralls.io/repos/github/sih4sing5hong5/hue7jip8/badge.svg?branch=master)](https://coveralls.io/github/sih4sing5hong5/hue7jip8?branch=master)
 
 會當參考服務的[文件](https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_hok8-bu7/wiki/%E5%BF%AB%E9%80%9F%E8%AA%AA%E6%98%8E#%E8%A8%93%E7%B7%B4%E8%AA%9E%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8B)
 
