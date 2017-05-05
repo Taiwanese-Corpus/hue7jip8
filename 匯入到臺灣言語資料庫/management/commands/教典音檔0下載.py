@@ -17,7 +17,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **參數):
         專案路徑 = join(
-            dirname(abspath(__file__)), '..', '..',
+            dirname(abspath(__file__)), '..', '..', '..',
         )
         腳本路徑 = join(
             專案路徑, '匯入到臺灣言語資料庫', '教育部閩南語常用詞辭典',
