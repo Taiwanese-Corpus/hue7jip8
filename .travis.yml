@@ -6,6 +6,7 @@ python:
 env:
 - TOX_ENV=e-dictionary.apc
 - TOX_ENV=moedict-twblg
+- TOX_ENV=sin1pak8tshi7-900-le7ku3
 - TOX_ENV=flake8
 addons:
   apt:
