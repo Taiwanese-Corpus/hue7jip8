@@ -16,11 +16,11 @@ python manage.py 訓練HTS Pangcah 族語辭典
 
 ## 閩南語
 ```
-bash 下載臺語教典音檔-dropbox.sh # 20160926掠的版本
-bash 下載臺語教典音檔-官網沓沓掠.sh # 較慢，愛一工
-python manage.py 教典音檔1轉檔 --匯入幾筆 100 # 匯入100筆就好，試驗用
+python manage.py 教典音檔0下載 dropbox # 20160926掠的版本
+python manage.py 教典音檔0下載 官網沓沓掠 # 較慢，愛一工
+python manage.py 教典音檔1轉檔 --匯入幾筆 100 # 轉100筆就好，試驗用
+python manage.py 教典音檔1轉檔 # 轉全部音檔
 python manage.py 教典音檔2匯入 --匯入幾筆 100 # 匯入100筆就好，試驗用
-python manage.py 教典音檔1轉檔 # 完整匯入
 python manage.py 教典音檔2匯入 # 完整匯入
 python manage.py 訓練HTS 臺語 王秀容
 ```
