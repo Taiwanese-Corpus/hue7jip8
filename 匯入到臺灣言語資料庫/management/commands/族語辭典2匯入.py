@@ -46,7 +46,7 @@ class Command(BaseCommand):
             '收錄者': 來源表.objects.get_or_create(名='系統管理員')[0].編號(),
             '來源': 來源表.objects.get_or_create(名='原住民族語言線上詞典')[0].編號(),
             '版權': 版權表.objects.get_or_create(版權='會使公開')[0].pk,
-            '語言腔口': 'Pangcah',
+            '語言腔口': 參數['語言'],
             '著作所在地': '臺灣',
             '著作年': str(2016),
             '屬性': {'語者': '族語辭典'}
