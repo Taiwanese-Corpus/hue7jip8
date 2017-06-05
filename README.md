@@ -13,7 +13,7 @@ python manage.py 族語辭典1轉檔 Pangcah
 python manage.py 族語辭典2匯入 Pangcah
 python manage.py 訓練HTS Pangcah 族語辭典
 ```
-語言代碼請[參考程式](https://github.com/sih4sing5hong5/hue7jip8/blob/master/%E5%8C%AF%E5%85%A5%E5%88%B0%E8%87%BA%E7%81%A3%E8%A8%80%E8%AA%9E%E8%B3%87%E6%96%99%E5%BA%AB/%E6%97%8F%E8%AA%9E%E8%BE%AD%E5%85%B8.py#L1)
+語言代碼請[參考程式](https://github.com/sih4sing5hong5/hue7jip8/blob/master/%E5%8C%AF%E5%85%A5%E5%88%B0%E8%87%BA%E7%81%A3%E8%A8%80%E8%AA%9E%E8%B3%87%E6%96%99%E5%BA%AB/%E6%97%8F%E8%AA%9E%E8%BE%AD%E5%85%B8.py#L1)。下載好的[音檔]在這（可能還沒抓完）
 
 ## 閩南語
 ```
