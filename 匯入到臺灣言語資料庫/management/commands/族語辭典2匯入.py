@@ -59,7 +59,7 @@ class Command(BaseCommand):
                     語料目錄,
                     splitext(basename(urlparse(mp3網址音檔).path))[0] + '.wav'
                 )
-                if isfile(wav音檔):
+                if 詞條 and isfile(wav音檔):
                     影音內容 = {'影音所在': wav音檔, '種類': 種類}
                     影音內容.update(公家內容)
                     影音 = 影音表.加資料(影音內容)
