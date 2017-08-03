@@ -93,3 +93,8 @@ ENV/
 /資料庫影音檔案/
 /db.sqlite3
 /MANIFEST
+
+.project
+.pydevproject
+.settings/
+
