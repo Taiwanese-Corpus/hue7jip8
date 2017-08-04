@@ -50,13 +50,13 @@ class 台華試驗(TestCase):
     def test匯入外語英文正確(self):
         匯入一筆(self.下載資料阿母)
         一外語 = 外語表.objects.get(外語資料='mother')
-        self.assertEqual(一外語.外語語言.語言腔口, '英語') 
+        self.assertEqual(一外語.外語語言.語言腔口, '英語')
 
     def test匯入外語華語正確(self):
         匯入一筆(self.下載資料阿母)
         一外語 = 外語表.objects.get(外語資料='母親')
         外語表.objects.get(外語資料='媽媽')
-        self.assertEqual(一外語.外語語言.語言腔口, '華語') 
+        self.assertEqual(一外語.外語語言.語言腔口, '華語')
 
     def test匯入文本數量正確(self):
         匯入一筆(self.下載資料阿母)
