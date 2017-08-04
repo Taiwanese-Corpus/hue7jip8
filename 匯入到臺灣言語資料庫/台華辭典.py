@@ -7,19 +7,20 @@ from csv import DictReader
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 from 臺灣言語工具.解析整理.文章粗胚 import 文章粗胚
 from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音相容教會羅馬字音標 import 臺灣閩南語羅馬字拼音相容教會羅馬字音標
-from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 from 臺灣言語工具.基本物件.公用變數 import 分字符號
 from 臺灣言語工具.基本物件.公用變數 import 分詞符號
 from 臺灣言語資料庫.資料模型 import 來源表
 from 臺灣言語資料庫.資料模型 import 版權表
 from 臺灣言語資料庫.資料模型 import 外語表
-from 臺灣言語工具.解析整理.羅馬字仕上げ import 羅馬字仕上げ
+
 
 def 下載():
     語料目錄 = join(settings.BASE_DIR, '語料', '台華辭典')
     makedirs(語料目錄, exist_ok=True)
     with urlopen(
-        'https://raw.githubusercontent.com/Taiwanese-Corpus/Tinn-liong-ui_2000_taihoa-dictionary/master/%E6%95%99%E8%82%B2%E9%83%A8%E5%BB%BA%E8%AD%B0%E7%94%A8%E5%AD%97/Taihoa.csv'
+        'https://raw.githubusercontent.com/Taiwanese-Corpus/' +
+        'Tinn-liong-ui_2000_taihoa-dictionary/master/' +
+        '%E6%95%99%E8%82%B2%E9%83%A8%E5%BB%BA%E8%AD%B0%E7%94%A8%E5%AD%97/Taihoa.csv'
     ) as 資料檔案:
         全部資料csv = 資料檔案.read().decode('utf-8')
         with io.StringIO(全部資料csv) as 詞目:
@@ -28,11 +29,13 @@ def 下載():
             for 一逝 in 讀檔:
                 輸出陣列.append(一逝)
             return 輸出陣列
-    
+
+
 def 匯入(陣列):
     for 一筆 in 陣列:
         匯入一筆(一筆)
     return
+
 
 def 處理音標(音標):
     return (
@@ -41,7 +44,8 @@ def 處理音標(音標):
         .轉音(臺灣閩南語羅馬字拼音相容教會羅馬字音標)
         .看型(物件分字符號=分字符號, 物件分詞符號=分詞符號)
     )
-    
+
+
 def 匯入一筆(一筆):
     # 12,a-bo2,a-bu2,阿母,;母親;媽媽;,mother,1884,Na
     # 華語, 英文都要照;拆開
@@ -64,6 +68,7 @@ def 匯入一筆(一筆):
             存入外語表(音標, 台語漢字, 英文, 詞性)
     return
 
+
 def 存入外語表(音標, 台語漢字, 外語字, 詞性):
     公家 = {
         '收錄者': 來源表.objects.get_or_create(名='系統管理員')[0].編號(),
@@ -85,6 +90,6 @@ def 存入外語表(音標, 台語漢字, 外語字, 詞性):
         文本內容 = {
             '文本資料': 台語漢字,
             '音標資料': 臺羅音標,
-        }    
+        }
         文本內容.update(公家)
         外語.翻母語(文本內容)
