@@ -68,3 +68,13 @@ class 台華試驗(TestCase):
         一筆query = 匯入一筆(self.下載資料鬱熱)
         一文本 = 文本表.objects.get(文本資料='鬱熱')
         self.assertEqual(一文本.音標資料, 'ut4-juah8')
+    
+    def test匯入外語詞性(self):
+        匯入一筆(self.下載資料阿母)
+        一外語 = 外語表.objects.get(外語資料='母親')
+        self.assertEqual(一外語.屬性內容(), {'詞性':'Na'})
+    
+    def test匯入文本不要有詞性(self):
+        匯入一筆(self.下載資料鬱熱)
+        一文本 = 文本表.objects.get(文本資料='鬱熱')
+        self.assertEqual(一文本.屬性內容(), {})
