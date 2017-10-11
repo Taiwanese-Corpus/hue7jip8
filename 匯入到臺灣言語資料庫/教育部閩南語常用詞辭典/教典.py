@@ -22,7 +22,7 @@ class 教典():
         return self.下載(self.詞目總檔)
         
     def 下載(self, 下載網址):
-        print('下載', 下載網址)
+        print('下載', urllib.unquote(下載網址).decode('utf8') )
         語料目錄 = join(settings.BASE_DIR, '語料', '教典')
         makedirs(語料目錄, exist_ok=True)
         with urlopen(下載網址) as 資料檔案:
@@ -32,30 +32,23 @@ class 教典():
                 輸出陣列 = []
                 for 一逝 in 讀檔:
                     輸出陣列.append(一逝)
-#                 print('輸出', 輸出陣列)
                 return 輸出陣列
 
-    def 列印詞目總檔(self, 陣列):
-        for 一筆 in 陣列:
-            self.列印一筆詞目(一筆)
-        return
-
-    def 列印一筆詞目(self, 一筆):
-        # 主編碼,屬性,詞目,音讀,文白屬性,部首
-        # 1,1,一,tsi̍t/tsi̍t,4,一
-        台語漢字 = 一筆['詞目'].strip()
-        for 臺羅 in 一筆['台語羅馬字'].strip().split('/'):
-            self.列印一筆辭典(音標, 台語漢字, 華語)
-        return
-
-    def 列印一筆辭典(self, 音標陣列, 台語漢字, 外語字):
-        for 臺羅音標 in 音標陣列:
-            print('{} {} {}'.format(台語漢字, 臺羅音標, 外語字))
-
-    def 處理音標(self, 音標):
-        return (
-            拆文分析器
-            .建立句物件(文章粗胚.建立物件語句前處理減號(臺灣閩南語羅馬字拼音相容教會羅馬字音標, 音標))
-            .轉音(臺灣閩南語羅馬字拼音相容教會羅馬字音標)
-            .看型(物件分字符號=分字符號, 物件分詞符號=分詞符號)
-        )
+    def 取得臺羅對照華語(self):
+        對應華語檔 = self.下載對應華語檔()
+        詞目總檔 = self.下載詞目總檔()
+        臺羅華結果 = [] 
+        for 一詞目 in 詞目總檔:
+            # 一字多音分成兩個詞
+            臺字 = 一詞目['詞目'].strip()
+            臺編號 = 一詞目['主編碼'].strip()
+            for 一羅馬 in 一詞目['音讀'].strip().split('/'):
+                for 一逝 in 對應華語檔:
+                    if 一逝['n_no'] == 臺編號:
+                        華字 = 一逝['kokgi']
+                        臺羅華結果.append({
+                            '臺字': 臺字,
+                            '羅馬': 一羅馬,
+                            '華字': 華字,
+                        })
+        return 臺羅華結果
