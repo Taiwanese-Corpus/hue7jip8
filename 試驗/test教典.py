@@ -59,3 +59,42 @@ class 教典試驗(TestCase):
             if 一物件['羅馬'] == 'tsi̍t' and 一物件['臺字'] == '一':
                 數量 += 1
         self.assertEqual(數量, 2)
+
+    def test取得一臺羅一華語去空白(self):
+        臺羅華陣列 = self.一教典.取得臺羅對照華語()
+        有揣到 = False
+        for 一物件 in 臺羅華陣列:
+            if 一物件['臺字'] == '介紹' and 一物件['華字'].startswith('引進'):
+                有揣到 = True
+                self.assertEqual(一物件, {
+                    '臺字': '介紹',
+                    '羅馬': 'kài-siāu',
+                    '華字': '引進',
+                })
+        self.assertTrue(有揣到)
+
+    def test最後一個臺字(self):
+        臺羅華陣列 = self.一教典.取得臺羅對照華語()
+        有揣到 = False
+        for 一物件 in 臺羅華陣列:
+            if 一物件['臺字'] == '戇的也有一項會。':
+                有揣到 = True
+                self.assertEqual(一物件, {
+                    '臺字': '戇的也有一項會。',
+                    '羅馬': 'Gōng--ê iā ū tsi̍t hāng ē.',
+                    '華字': '',
+                })
+        self.assertTrue(有揣到)
+    
+    def test最後一個華字(self):
+        臺羅華陣列 = self.一教典.取得臺羅對照華語()
+        有揣到 = False
+        for 一物件 in 臺羅華陣列:
+            if 一物件['臺字'] == '肥朒朒':
+                有揣到 = True
+                self.assertEqual(一物件, {
+                    '臺字': '肥朒朒',
+                    '羅馬': 'puî-tsut-tsut',
+                    '華字': '肥嘟嘟',
+                })
+        self.assertTrue(有揣到)
