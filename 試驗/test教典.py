@@ -73,18 +73,13 @@ class 教典試驗(TestCase):
                 })
         self.assertTrue(有揣到)
 
-    def test最後一個臺字(self):
+    def test不要出現無華字的臺字(self):
         臺羅華陣列 = self.一教典.取得臺羅對照華語()
         有揣到 = False
         for 一物件 in 臺羅華陣列:
             if 一物件['臺字'] == '戇的也有一項會。':
                 有揣到 = True
-                self.assertEqual(一物件, {
-                    '臺字': '戇的也有一項會。',
-                    '羅馬': 'Gōng--ê iā ū tsi̍t hāng ē.',
-                    '華字': '',
-                })
-        self.assertTrue(有揣到)
+        self.assertFalse(有揣到)
     
     def test最後一個華字(self):
         臺羅華陣列 = self.一教典.取得臺羅對照華語()

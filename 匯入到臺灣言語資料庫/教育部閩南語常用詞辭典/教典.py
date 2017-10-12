@@ -38,11 +38,8 @@ class 教典():
         詞目總檔 = self.下載詞目總檔()
         對應華語檔 = self.下載對應華語檔()
         對應華語檔.sort(key=lambda x: int(x['n_no']))
-#         print(對應華語檔)
-#         return
         臺羅華結果 = []
         華語迴圈索引 = 0
-        n_no = None
         for 一詞目 in 詞目總檔:
             # 一臺多華分成多個詞
             # 多臺一華分成多個詞
@@ -50,27 +47,17 @@ class 教典():
             臺編號 = 一詞目['主編碼'].strip()
             for 索引, 一逝 in enumerate(對應華語檔[華語迴圈索引:], start=華語迴圈索引):
                 if 一逝['n_no'] == 臺編號:
-                    華字 = 一逝['kokgi']
-                    for 一羅馬 in 一詞目['音讀'].strip().split('/'):
-#                         print({
-#                             '臺字': 臺字,
-#                             '羅馬': 一羅馬,
-#                             '華字': 華字,
-#                             '臺編號': 臺編號,
-#                         })
+                    華字 = 一逝['kokgi'].strip()
+                    羅馬陣列 = 一詞目['音讀'].strip().split('/')
+                    for 一羅馬 in 羅馬陣列:
                         臺羅華結果.append({
                             '臺字': 臺字,
                             '羅馬': 一羅馬,
                             '華字': 華字,
                         })
                 else:
-#                     print('n_no: {} 華語迴圈索引:{} 索引: {}'.format(n_no, 華語迴圈索引, 索引))
-#                     print('一逝: ', 一逝)
                     華語迴圈索引 = 索引
-                    n_no = 一逝['n_no']
-#                     print('n_no: ', n_no)
                     break
-#         print('n_no: ', n_no)
         return 臺羅華結果
 
     def 列印辭典(self):
