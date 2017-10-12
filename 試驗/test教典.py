@@ -32,22 +32,15 @@ class 教典試驗(TestCase):
     def test取得多臺羅一華語(self):
         臺羅華陣列 = self.一教典.取得臺羅對照華語()
         數量 = 0
-        print(臺羅華陣列)
         for 一物件 in 臺羅華陣列:
             if 一物件['臺字'] == '一月日':
                 數量 += 1
-                print('一物件', 一物件)
-                self.assertEqual(一物件, {
-                    '臺字': '一月日',
-                    '羅馬': 'tsit8 gueh8-jit8',
-                    '華字': '一個月',
-                })
         self.assertEqual(數量, 2)
 
     def test取得一臺羅多華語(self):
         臺羅華陣列 = self.一教典.取得臺羅對照華語()
         數量 = 0
         for 一物件 in 臺羅華陣列:
-            if 一物件['羅馬'] == 'tsi̍t':
+            if 一物件['羅馬'] == 'tsi̍t' and 一物件['臺字'] == '一':
                 數量 += 1
         self.assertEqual(數量, 2)
