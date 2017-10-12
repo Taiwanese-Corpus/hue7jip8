@@ -4,8 +4,6 @@ from os import makedirs
 from urllib.request import urlopen
 import io
 from csv import DictReader
-from urllib.parse import unquote
-# from 匯入到臺灣言語資料庫.台華辭典 import 處理音標
 
 
 class 教典():
@@ -21,7 +19,7 @@ class 教典():
 
     def 下載詞目總檔(self):
         return self.下載(self.詞目總檔)
-        
+
     def 下載(self, 下載網址):
         print('下載', 下載網址)
         語料目錄 = join(settings.BASE_DIR, '語料', '教典')
@@ -38,23 +36,23 @@ class 教典():
     def 取得臺羅對照華語(self):
         對應華語檔 = self.下載對應華語檔()
         詞目總檔 = self.下載詞目總檔()
-        臺羅華結果 = [] 
-        
+        臺羅華結果 = []
+        華語迴圈索引 = 0
         for 一詞目 in 詞目總檔:
-            # 一字多音分成兩個詞
-#             print('一詞目', 一詞目)
+            # 一臺多華分成多個詞
+            # 多臺一華分成多個詞
             臺字 = 一詞目['詞目'].strip()
             臺編號 = 一詞目['主編碼'].strip()
-            for 一羅馬 in 一詞目['音讀'].strip().split('/'):
-                for 一逝 in 對應華語檔:
-                    if 一逝['n_no'] == 臺編號:
-#                         print('一逝', 臺編號, 臺字, 一逝)
-                        華字 = 一逝['kokgi']
+            for 索引, 一逝 in enumerate(對應華語檔[華語迴圈索引:], start=華語迴圈索引):
+                if 一逝['n_no'] == 臺編號:
+                    華字 = 一逝['kokgi']
+                    for 一羅馬 in 一詞目['音讀'].strip().split('/'):
                         臺羅華結果.append({
                             '臺字': 臺字,
                             '羅馬': 一羅馬,
                             '華字': 華字,
                         })
-#             if 臺字 == '一月日':
-#                 return
+                else:
+                    華語迴圈索引 = 索引
+                    break
         return 臺羅華結果

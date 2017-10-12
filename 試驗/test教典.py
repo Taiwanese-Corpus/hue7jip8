@@ -29,6 +29,18 @@ class 教典試驗(TestCase):
         華語檔陣列 = self.一教典.下載對應華語檔()
         self.assertEqual(華語檔陣列[8], self.一日月華語)
 
+    def test取得一臺羅一華語(self):
+        臺羅華陣列 = self.一教典.取得臺羅對照華語()
+        有揣到 = False
+        for 一物件 in 臺羅華陣列:
+            if 一物件['臺字'] == '一刀兩斷':
+                self.assertEqual(一物件, {
+                    '臺字': '一刀兩斷',
+                    '羅馬': 'it4-to1-liong2-tuan7',
+                    '華字': '一刀兩斷',
+                })
+        self.assertTrue(有揣到)
+
     def test取得多臺羅一華語(self):
         臺羅華陣列 = self.一教典.取得臺羅對照華語()
         數量 = 0
