@@ -4,6 +4,7 @@ from os import makedirs
 from urllib.request import urlopen
 import io
 from csv import DictReader
+import json
 
 
 class 教典():
@@ -56,3 +57,8 @@ class 教典():
                     華語迴圈索引 = 索引
                     break
         return 臺羅華結果
+
+    def 列印辭典(self):
+        臺羅華結果 = self.取得臺羅對照華語()
+        with open('列印教典.log', 'w') as outputfile:
+            json.dump(臺羅華結果, outputfile, ensure_ascii=False, indent=2)

@@ -10,5 +10,5 @@ class Command(BaseCommand):
 
     def handle(self, *args, **參數):
         一教典物件 = 教典()
-        一教典物件.下載對應華語檔()
+        一教典物件.列印辭典()
         
