@@ -24,19 +24,22 @@ class 教典試驗(TestCase):
     def test下載詞目正確(self):
         詞目總檔陣列 = self.一教典.下載詞目總檔()
         self.assertEqual(詞目總檔陣列[4], self.一月日詞目)
+        self.assertEqual(len(詞目總檔陣列), 25881)
 
     def test下載華語正確(self):
         華語檔陣列 = self.一教典.下載對應華語檔()
         self.assertEqual(華語檔陣列[8], self.一日月華語)
+        self.assertEqual(len(華語檔陣列), 30416)
 
     def test取得一臺羅一華語(self):
         臺羅華陣列 = self.一教典.取得臺羅對照華語()
         有揣到 = False
         for 一物件 in 臺羅華陣列:
             if 一物件['臺字'] == '一刀兩斷':
+                有揣到 = True
                 self.assertEqual(一物件, {
                     '臺字': '一刀兩斷',
-                    '羅馬': 'it4-to1-liong2-tuan7',
+                    '羅馬': 'it-to-lióng-tuān',
                     '華字': '一刀兩斷',
                 })
         self.assertTrue(有揣到)
