@@ -29,15 +29,25 @@ class 教典試驗(TestCase):
         華語檔陣列 = self.一教典.下載對應華語檔()
         self.assertEqual(華語檔陣列[8], self.一日月華語)
 
-    def test取得臺羅對照華語(self):
+    def test取得多臺羅一華語(self):
         臺羅華陣列 = self.一教典.取得臺羅對照華語()
-        是否有一日月 = False
+        數量 = 0
+        print(臺羅華陣列)
         for 一物件 in 臺羅華陣列:
-            if 一物件['臺字'] == '一日月':
-                是否有一日月 = True
+            if 一物件['臺字'] == '一月日':
+                數量 += 1
+                print('一物件', 一物件)
                 self.assertEqual(一物件, {
                     '臺字': '一月日',
                     '羅馬': 'tsit8 gueh8-jit8',
                     '華字': '一個月',
                 })
-        self.assertTrue(是否有一日月)
+        self.assertEqual(數量, 2)
+
+    def test取得一臺羅多華語(self):
+        臺羅華陣列 = self.一教典.取得臺羅對照華語()
+        數量 = 0
+        for 一物件 in 臺羅華陣列:
+            if 一物件['羅馬'] == 'tsi̍t':
+                數量 += 1
+        self.assertEqual(數量, 2)
