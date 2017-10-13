@@ -103,6 +103,7 @@ def 列印辭典(陣列):
     with open('列印台華辭典.log', 'w') as outputfile:
         json.dump(列印陣列, outputfile, ensure_ascii=False)
 
+
 def 列印一筆(一筆):
     # 12,a-bo2,a-bu2,阿母,;母親;媽媽;,mother,1884,Na
     # 華語, 英文都要照;拆開

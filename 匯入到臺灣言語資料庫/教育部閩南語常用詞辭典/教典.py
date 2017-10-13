@@ -64,7 +64,7 @@ class 教典():
                     華語迴圈索引 = 索引
                     break
 #                 elif 臺編號數字 > n_no數字:
-#                     # 詞目總檔跳號 
+#                     # 詞目總檔跳號
 #                     # 原因：https://github.com/g0v/moedict-data-twblg/issues/10
 #                     # 『對應華語的抓取是在詞目總檔更新前，所以可能已經改版』
 #                     # 例：
