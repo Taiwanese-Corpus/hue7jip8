@@ -80,7 +80,7 @@ class 教典試驗(TestCase):
             if 一物件['臺字'] == '戇的也有一項會。':
                 有揣到 = True
         self.assertFalse(有揣到)
-    
+
     def test最後一個華字(self):
         臺羅華陣列 = self.一教典.取得臺羅對照華語()
         有揣到 = False
@@ -92,4 +92,12 @@ class 教典試驗(TestCase):
                     '羅馬': 'puî-tsut-tsut',
                     '華字': '肥嘟嘟',
                 })
+        self.assertTrue(有揣到)
+
+    def test排序後最後一個華字(self):
+        臺羅華陣列 = self.一教典.取得臺羅對照華語()
+        有揣到 = False
+        for 一物件 in 臺羅華陣列:
+            if 一物件['臺字'] == '短打':
+                有揣到 = True
         self.assertTrue(有揣到)
