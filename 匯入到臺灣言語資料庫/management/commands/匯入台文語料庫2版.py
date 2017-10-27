@@ -18,7 +18,8 @@ class Command(BaseCommand):
             '聽拍json',  type=str
         )
         parser.add_argument(
-            'wav資料夾所在',  type=str
+            '--wav資料夾所在',  type=str,
+            default='.',
         )
 
     def handle(self, *args, **參數):
