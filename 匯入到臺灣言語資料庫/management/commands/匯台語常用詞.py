@@ -1,4 +1,4 @@
-from csv import DictReader
+from csv import DictReader, DictWriter
 import json
 
 from django.core.management import call_command
@@ -41,13 +41,48 @@ class Command(BaseCommand):
 
     def handle(self, *args, **參數):
         call_command('顯示資料數量')
+        結果 = []
+        無對著的 = []
+        台華辭典 = self._辭典台華對應(參數['辭典json'])
+        for (漢字, 臺羅, 頻次nc) in self._csv的index(參數['常用詞csv']):
+            if (漢字, 臺羅) in 台華辭典:
+                結果.append((漢字, 臺羅, 頻次nc, 台華辭典[(漢字, 臺羅)]))
+            else:
+                無對著的.append((漢字, 臺羅, 頻次nc))
+        self._輸出對著結果(結果)
+        self._輸出無揣著(無對著的)
 
-        辭典, 外來詞 = self._csv的index(參數['常用詞csv'])
-        for 匯入數量, (漢字, 臺羅, 華語) in enumerate(
-            self._比較有仝款的無(參數['辭典json'], 辭典, 外來詞)
-        ):
-            print((漢字, 臺羅, 華語))
-#             continue
+    def _輸出對著結果(self, 結果):
+        with open('台華有對應.csv', 'w') as 常用詞csv:
+            fieldnames = ['漢字', '臺羅', '頻次nc', '華語']
+            writer = DictWriter(常用詞csv, fieldnames=fieldnames)
+
+            writer.writeheader()
+            for 漢字, 臺羅, 頻次nc, 華語陣列 in 結果:
+                for 華語 in 華語陣列:
+                    writer.writerow({
+                        '漢字': 漢字,
+                        '臺羅': 臺羅,
+                        '頻次nc': 頻次nc,
+                        '華語': 華語,
+                    })
+
+    def _輸出無揣著(self, 結果):
+        with open('台華無對著.csv', 'w') as 常用詞csv:
+            fieldnames = ['漢字', '臺羅', '頻次nc']
+            writer = DictWriter(常用詞csv, fieldnames=fieldnames)
+
+            writer.writeheader()
+            for 漢字, 臺羅, 頻次nc, in 結果:
+                writer.writerow({
+                    '漢字': 漢字,
+                    '臺羅': 臺羅,
+                    '頻次nc': 頻次nc,
+                })
+
+    def _buaih(self):
+        匯入數量 = 0
+        for 漢字, 臺羅, 頻次nc, 華語 in 結果:
             外語內容 = {
                 '外語語言': '華語',
                 '外語資料': 華語,
@@ -60,14 +95,12 @@ class Command(BaseCommand):
             }
             文本內容.update(self.公家)
             外語.翻母語(文本內容)
-
+            匯入數量 += 1
             if 匯入數量 == 參數['匯入幾筆']:
                 break
         call_command('顯示資料數量')
 
     def _csv的index(self, 常用詞csv所在):
-        辭典 = set()
-        外來詞 = set()
         with open(常用詞csv所在) as 常用詞csv:
             for 一逝 in DictReader(常用詞csv):
                 臺羅 = 一逝['臺羅'].strip()
@@ -76,23 +109,10 @@ class Command(BaseCommand):
                     .分詞句物件(文章粗胚.建立物件語句前處理減號(臺灣閩南語羅馬字拼音, 臺羅))
                     .轉音(臺灣閩南語羅馬字拼音相容教會羅馬字音標)
                 )
-                外來詞.add(數字調.看型('-'))
-#                 漢字 = 一逝['漢字'].strip()
-#                 if 漢字 == 臺羅:
-#                     外來詞.add(文章粗胚.建立物件語句前處理減號(臺灣閩南語羅馬字拼音, 臺羅))
-#                 else:
-#                     try:
-#                         辭典.add(
-#                             拆文分析器.對齊句物件(
-#                                 文章粗胚.建立物件語句前處理減號(臺灣閩南語羅馬字拼音, 漢字),
-#                                 文章粗胚.建立物件語句前處理減號(臺灣閩南語羅馬字拼音, 臺羅)
-#                             ).看分詞()
-#                         )
-#                     except:
-#                         外來詞.add(文章粗胚.建立物件語句前處理減號(臺灣閩南語羅馬字拼音, 臺羅))
-        return 辭典, 外來詞
+                yield 一逝['漢字'].strip(), 數字調.看型('-'), 一逝['頻次nc']
 
-    def _比較有仝款的無(self, 辭典json所在, 辭典, 外來詞):
+    def _辭典台華對應(self, 辭典json所在):
+        資料 = {}
         with open(辭典json所在) as 辭典json:
             for 一條 in json.load(辭典json):
                 漢字 = 文章粗胚.建立物件語句前處理減號(臺灣閩南語羅馬字拼音相容教會羅馬字音標, 一條['臺字'])
@@ -103,14 +123,9 @@ class Command(BaseCommand):
                     .轉音(臺灣閩南語羅馬字拼音相容教會羅馬字音標)
                 )
                 標準 = 數字調.看型('-')
-                if 標準 in 外來詞:
-                    yield 漢字, 標準, 一條['華字']
-#                 if 漢字 == 臺羅:
-#                     if 臺羅 in 外來詞:
-#                         yield 漢字, 臺羅, 一條['華字']
-#                 else:
-#                     print(漢字, 臺羅)
-#                     if (
-#                         拆文分析器.對齊句物件(漢字, 臺羅).轉音(臺灣閩南語羅馬字拼音相容教會羅馬字音標).看分詞()
-#                     ) in 辭典:
-#                         yield 漢字, 臺羅, 一條['華字']
+                try:
+                    資料[(漢字, 標準)].append(一條['華字'])
+                except KeyError:
+                    資料[(漢字, 標準)] = [一條['華字']]
+
+        return 資料
