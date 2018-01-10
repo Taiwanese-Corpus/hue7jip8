@@ -1,9 +1,12 @@
+import io
 import json
 from os.path import join
 
 from django.core.management import call_command
 from django.test.testcases import TestCase
 from setuptools.py31compat import TemporaryDirectory
+
+
 from 臺灣言語工具.語音辨識.聲音檔 import 聲音檔
 from 臺灣言語服務.models import 訓練過渡格式
 
@@ -84,7 +87,8 @@ class 匯入2版單元試驗(TestCase):
             self.兩檔[1]['影音所在'] = 聲音檔所在
             with open(資料檔所在, 'wt') as 檔案:
                 json.dump(self.兩檔, 檔案)
-            call_command('匯入台文語料庫2版', 資料檔所在)
+            with io.StringIO() as out:
+                call_command('匯入台文語料庫2版', 資料檔所在, stdout=out)
         self.assertEqual(訓練過渡格式.資料數量(), 2)
 
     def test_匯入內容(self):
@@ -96,5 +100,6 @@ class 匯入2版單元試驗(TestCase):
             self.兩句[0]['影音所在'] = 聲音檔所在
             with open(資料檔所在, 'wt') as 檔案:
                 json.dump(self.兩句, 檔案)
-            call_command('匯入台文語料庫2版', 資料檔所在)
-        self.assertEqual(訓練過渡格式.objects.get().聽拍資料, self.兩句[0]['聽拍資料'])
+            with io.StringIO() as out:
+                call_command('匯入台文語料庫2版', 資料檔所在, stdout=out)
+        self.assertEqual(訓練過渡格式.objects.get().聽拍, self.兩句[0]['聽拍資料'])
