@@ -22,7 +22,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **參數):
         self.stdout.write('資料數量：{}'.format(訓練過渡格式.資料數量()))
-        
+
         全部資料 = []
         匯入數量 = 0
         with open(參數['聽拍json']) as 檔案:
