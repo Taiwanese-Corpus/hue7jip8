@@ -7,4 +7,4 @@ class 台華雙語試驗(TestCase):
 
     def test句數正確(self):
         call_command('icorpus臺華平行新聞語料庫')
-        self.assertEqual(訓練過渡格式.資料數量(), 83544)
+        self.assertGreater(訓練過渡格式.資料數量(), 83544 - 10)
