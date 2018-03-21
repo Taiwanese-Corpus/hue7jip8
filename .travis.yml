@@ -9,6 +9,7 @@ env:
 - TOX_ENV=sin1pak8tshi7-900-le7ku3
 - TOX_ENV=flake8
 - TOX_ENV=taihoa-dictionary
+- TOX_ENV=icorpus
 addons:
   apt:
     sources:
