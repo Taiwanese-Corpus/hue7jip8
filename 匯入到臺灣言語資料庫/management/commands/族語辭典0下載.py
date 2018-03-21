@@ -9,6 +9,7 @@ from urllib.request import urlopen, urlretrieve
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from 匯入到臺灣言語資料庫.族語辭典 import 代碼對應
+from urllib.error import URLError
 
 
 class Command(BaseCommand):
@@ -62,7 +63,7 @@ class Command(BaseCommand):
                     print('掠 {} …'.format(所在))
                     try:
                         urlretrieve(quote(網址, safe='/:'), 所在)
-                    except:
+                    except URLError:
                         pass
                     else:
                         break
