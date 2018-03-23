@@ -10,6 +10,7 @@ env:
 - TOX_ENV=flake8
 - TOX_ENV=taihoa-dictionary
 - TOX_ENV=icorpus
+- TOX_ENV=教典例句
 addons:
   apt:
     sources:
