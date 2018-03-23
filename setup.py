@@ -29,7 +29,7 @@ def 揣工具包(頭):
 
 setup(
     name='hue7jip8',
-    packages=揣工具包('匯入到臺灣言語資料庫'),
+    packages=揣工具包('匯入'),
     version=版本,
     description='臺灣語言服務',
     long_description=讀('README.md'),
@@ -51,7 +51,7 @@ setup(
         'tai5-uan5_gian5-gi2_hok8-bu7',
     ],
     package_data={
-        '匯入到臺灣言語資料庫': [
+        '匯入': [
             '教育部閩南語常用詞辭典/下載臺語教典音檔-dropbox.sh',
             '教育部閩南語常用詞辭典/下載臺語教典音檔-官網沓沓掠.sh',
             '教育部閩南語常用詞辭典/詞目總檔.csv',

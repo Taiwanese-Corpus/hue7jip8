@@ -11,7 +11,7 @@ from django.core.management.base import BaseCommand
 from 臺灣言語資料庫.資料模型 import 來源表
 from 臺灣言語資料庫.資料模型 import 版權表
 from 臺灣言語資料庫.資料模型 import 影音表
-from 匯入到臺灣言語資料庫.族語辭典 import 代碼對應
+from 匯入.族語辭典 import 代碼對應
 
 
 class Command(BaseCommand):

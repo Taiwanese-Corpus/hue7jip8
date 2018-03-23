@@ -1,8 +1,8 @@
 from django.test.testcases import TestCase
 from 臺灣言語資料庫.資料模型 import 外語表
 from 臺灣言語資料庫.資料模型 import 文本表
-from 匯入到臺灣言語資料庫.台華辭典 import 下載
-from 匯入到臺灣言語資料庫.台華辭典 import 匯入一筆
+from 匯入.台華辭典 import 下載
+from 匯入.台華辭典 import 匯入一筆
 
 # 測試：
 # 台華下載
