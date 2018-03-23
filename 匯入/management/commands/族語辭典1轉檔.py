@@ -9,7 +9,7 @@ from libavwrapper.avconv import Input, Output, AVConv
 from libavwrapper.codec import AudioCodec, NO_VIDEO
 
 
-from 匯入到臺灣言語資料庫.族語辭典 import 代碼對應
+from 匯入.族語辭典 import 代碼對應
 
 
 class Command(BaseCommand):

@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
-from 匯入到臺灣言語資料庫.台華辭典 import 下載
-from 匯入到臺灣言語資料庫.台華辭典 import 匯入
+from 匯入.台華辭典 import 下載
+from 匯入.台華辭典 import 匯入
 from django.core.management import call_command
 
 
