@@ -1,4 +1,4 @@
-import json
+import yaml
 from urllib.request import urlopen
 
 from django.core.management.base import BaseCommand
@@ -12,7 +12,7 @@ from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
 
 class Command(BaseCommand):
     help = 'http://icorpus.iis.sinica.edu.tw/'
-    json網址 = 'https://github.com/sih4sing5hong5/icorpus/raw/master/icorpus.json'
+    yaml網址 = 'https://github.com/sih4sing5hong5/icorpus/raw/master/icorpus.yaml'
 
     公家內容 = {
         '來源': 'icorpus臺華平行新聞語料庫',
@@ -34,10 +34,7 @@ class Command(BaseCommand):
         匯入數量 = 0
         for 一筆 in self._全部資料():
             年代 = 一筆['日期'].split('-')[0]
-            for 台語, 華語 in zip(
-                一筆['台語'].split('\n'),
-                一筆['華語'].split('\n')
-            ):
+            for 台語, 華語 in zip(一筆['台語'], 一筆['華語']):
                 try:
                     台語物件 = 拆文分析器.建立句物件(台語).轉音(臺灣閩南語羅馬字拼音相容教會羅馬字音標)
                     華語物件 = 拆文分析器.建立句物件(華語)
@@ -65,5 +62,5 @@ class Command(BaseCommand):
         self.stdout.write('資料數量：{}'.format(訓練過渡格式.資料數量()))
 
     def _全部資料(self):
-        with urlopen(self.json網址) as 檔:
-            return json.loads(檔.read().decode())
+        with urlopen(self.yaml網址) as 檔:
+            return yaml.load(檔.read().decode())

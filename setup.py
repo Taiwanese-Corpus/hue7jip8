@@ -49,6 +49,7 @@ setup(
     ],
     install_requires=[
         'tai5-uan5_gian5-gi2_hok8-bu7',
+        'pyyaml',
     ],
     package_data={
         '匯入': [
