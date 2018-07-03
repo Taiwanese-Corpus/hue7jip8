@@ -11,6 +11,7 @@ env:
 - TOX_ENV=taihoa-dictionary
 - TOX_ENV=icorpus
 - TOX_ENV=教典例句
+- TOX_ENV=TGB
 - TOX_ENV=詞彙分級
 addons:
   apt:

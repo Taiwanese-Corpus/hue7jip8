@@ -1,4 +1,4 @@
-import yaml
+from urllib.parse import quote
 from urllib.request import urlopen
 
 from django.core.management.base import BaseCommand
@@ -11,11 +11,12 @@ from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
 
 
 class Command(BaseCommand):
-    help = 'http://icorpus.iis.sinica.edu.tw/'
-    yaml網址 = 'https://github.com/sih4sing5hong5/icorpus/raw/master/icorpus.yaml'
+    help = '原網站：http://taioanchouhap.pixnet.net/blog。Sîng-hông 2014整理的台華平行版本'
+    台文網址 = 'https://github.com/sih4sing5hong5/huan1-ik8_gian2-kiu3/raw/master/語料/TGB/對齊平行閩南語資料'
+    華文網址 = 'https://github.com/sih4sing5hong5/huan1-ik8_gian2-kiu3/raw/master/語料/TGB/對齊平行華語資料'
 
     公家內容 = {
-        '來源': 'icorpus臺華平行新聞語料庫',
+        '來源': 'TGB通訊',
         '種類': '語句',
     }
 
@@ -32,23 +33,21 @@ class Command(BaseCommand):
 
         全部資料 = []
         匯入數量 = 0
-        for 一筆 in self._全部資料():
-            年代 = 一筆['日期'].split('-')[0]
-            for 台語, 華語 in zip(一筆['台語'], 一筆['華語']):
-                try:
-                    台語物件 = 拆文分析器.建立句物件(台語).轉音(臺灣閩南語羅馬字拼音相容教會羅馬字音標)
-                    華語物件 = 拆文分析器.建立句物件(華語)
-                except 解析錯誤:
-                    print(台語, 華語)
-                else:
-                    全部資料.append(
-                        訓練過渡格式(
-                            文本=台語物件.看分詞(),
-                            外文=華語物件.看分詞(),
-                            年代=年代,
-                            **self.公家內容
-                        )
+        for 台語, 華語 in self._全部資料():
+            try:
+                台語物件 = 拆文分析器.分詞句物件(台語).轉音(臺灣閩南語羅馬字拼音相容教會羅馬字音標)
+                華語物件 = 拆文分析器.建立句物件(華語)
+            except 解析錯誤 as 錯誤:
+                print(台語, 華語, 錯誤)
+            else:
+                全部資料.append(
+                    訓練過渡格式(
+                        文本=台語物件.看分詞(),
+                        外文=華語物件.看分詞(),
+                        年代='2015',
+                        **self.公家內容
                     )
+                )
 
             匯入數量 += 1
             if 匯入數量 % 100 == 0:
@@ -62,5 +61,9 @@ class Command(BaseCommand):
         self.stdout.write('資料數量：{}'.format(訓練過渡格式.資料數量()))
 
     def _全部資料(self):
-        with urlopen(self.yaml網址) as 檔:
-            return yaml.load(檔.read().decode())
+        with urlopen(quote(self.台文網址, safe=':/')) as tai:
+            with urlopen(quote(self.華文網址, safe=':/')) as hua:
+                return zip(
+                    tai.read().decode().split('\n'),
+                    hua.read().decode().split('\n'),
+                )
