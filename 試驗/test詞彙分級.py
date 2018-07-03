@@ -7,4 +7,4 @@ class 試驗(TestCase):
 
     def test句數正確(self):
         call_command('詞彙分級')
-        self.assertGreater(訓練過渡格式.資料數量(), 200000)
+        self.assertGreater(訓練過渡格式.資料數量(), 59000)
