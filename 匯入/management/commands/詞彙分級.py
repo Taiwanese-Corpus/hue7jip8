@@ -39,15 +39,14 @@ class Command(BaseCommand):
         全部資料 = []
         匯入數量 = 0
         for 一篇 in self._全部資料():
-            print(sorted(一篇.keys()))
             年代 = '2018'
             for 一逝 in 一篇['文章資料']:
                 try:
                     台語物件 = 拆文分析器.建立句物件(一逝['漢字'], 一逝['臺羅'])
                 except 解析錯誤:
-                    print('第 {} 篇 漢羅有無對齊的!')
+                    print('第 {} 篇 漢羅有無對齊的!'.format(一篇['id']))
                 except 型態錯誤:
-                    print('第 {} 篇 漢羅無平長!')
+                    print('第 {} 篇 漢羅無平長!'.format(一篇['id']))
                 else:
                     全部資料.append(
                         訓練過渡格式(
