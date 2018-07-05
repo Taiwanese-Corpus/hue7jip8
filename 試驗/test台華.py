@@ -1,3 +1,5 @@
+from unittest.case import skip
+
 from django.core.management import call_command
 from django.test.testcases import TestCase
 from 臺灣言語資料庫.資料模型 import 外語表
@@ -35,6 +37,7 @@ class 台華試驗(TestCase):
             'pos_h': 'VH'
         }
 
+    @skip('舊資料庫進度傷慢')
     def test句數正確(self):
         call_command('台華辭典')
         self.assertGreater(訓練過渡格式.資料數量(), 900000)
