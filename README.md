@@ -3,34 +3,11 @@
 [![Build Status](https://travis-ci.org/Taiwanese-Corpus/hue7jip8.svg?branch=master)](https://travis-ci.org/Taiwanese-Corpus/hue7jip8)
 [![Coverage Status](https://coveralls.io/repos/github/Taiwanese-Corpus/hue7jip8/badge.svg?branch=master)](https://coveralls.io/github/Taiwanese-Corpus/hue7jip8?branch=master)
 
-目前語料都放在[Taiwanese-Corpus](https://github.com/Taiwanese-Corpus)，佮[匯入專案](https://github.com/sih4sing5hong5/hue7jip8)。
+匯入語料專案，目前語料都放在[Taiwanese-Corpus Github](https://github.com/Taiwanese-Corpus)，各專案詳細內容請洽各專案README。
 
-各專案詳細內容請洽各專案README。
 會當參考服務的[文件](https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_hok8-bu7/wiki/%E5%BF%AB%E9%80%9F%E8%AA%AA%E6%98%8E#%E8%A8%93%E7%B7%B4%E8%AA%9E%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8B)
 
-## 族語
-### [族語辭典](https://github.com/thewayiam/ami_dict_crawler)
-```
-python manage.py 族語辭典0下載 Pangcah # 完整匯入。較慢，愛五六工
-# python manage.py 族語辭典0下載 Pangcah --下載幾筆 10 # 匯入10筆就好，試驗用
-python manage.py 族語辭典1轉檔 Pangcah
-python manage.py 族語辭典2匯入 Pangcah
-```
-語言代碼請[參考程式](https://github.com/sih4sing5hong5/hue7jip8/blob/master/%E5%8C%AF%E5%85%A5%E5%88%B0%E8%87%BA%E7%81%A3%E8%A8%80%E8%AA%9E%E8%B3%87%E6%96%99%E5%BA%AB/%E6%97%8F%E8%AA%9E%E8%BE%AD%E5%85%B8.py#L1)。下載好的[音檔](https://www.dropbox.com/s/68ot9f8lhjoa9pb/%E6%97%8F%E8%AA%9E%E8%BE%AD%E5%85%B8.tar?dl=0)在這。
-
 ## 台語
-### 教典詞條音檔
-形式：全漢、全羅
-詞數：
-語者：王秀容
-```
-python manage.py 教典音檔0下載 dropbox # 20160926掠的版本
-# python manage.py 教典音檔0下載 官網沓沓掠 # 較慢，愛一工
-python manage.py 教典音檔1轉檔 # 轉全部mp3音檔做16000Hz的wav
-# python manage.py 教典音檔1轉檔 --匯入幾筆 100 # 轉100筆就好，試驗用
-python manage.py 教典音檔2匯入 # 完整匯入
-# python manage.py 教典音檔2匯入 --匯入幾筆 100 # 匯入100筆就好，試驗用
-```
 
 ### [臺灣閩南語常用詞辭典-例句](https://github.com/g0v/moedict-data-twblg/tree/master/uni)
 形式：全漢、全羅
@@ -73,9 +50,30 @@ python manage.py 詞彙分級
 
 
 ### 服務文件
+## 族語
+### [族語辭典](https://github.com/thewayiam/ami_dict_crawler)
+```
+python manage.py 族語辭典0下載 Pangcah # 完整匯入。較慢，愛五六工
+# python manage.py 族語辭典0下載 Pangcah --下載幾筆 10 # 匯入10筆就好，試驗用
+python manage.py 族語辭典1轉檔 Pangcah
+python manage.py 族語辭典2匯入 Pangcah
+```
+語言代碼請[參考程式](https://github.com/sih4sing5hong5/hue7jip8/blob/master/%E5%8C%AF%E5%85%A5%E5%88%B0%E8%87%BA%E7%81%A3%E8%A8%80%E8%AA%9E%E8%B3%87%E6%96%99%E5%BA%AB/%E6%97%8F%E8%AA%9E%E8%BE%AD%E5%85%B8.py#L1)。下載好的[音檔](https://www.dropbox.com/s/68ot9f8lhjoa9pb/%E6%97%8F%E8%AA%9E%E8%BE%AD%E5%85%B8.tar?dl=0)在這。
 
+## 台語
+### 教典詞條音檔
+形式：全漢、全羅
+詞數：
+語者：王秀容
+```
+python manage.py 教典音檔0下載 dropbox # 20160926掠的版本
+# python manage.py 教典音檔0下載 官網沓沓掠 # 較慢，愛一工
+python manage.py 教典音檔1轉檔 # 轉全部mp3音檔做16000Hz的wav
+# python manage.py 教典音檔1轉檔 --匯入幾筆 100 # 轉100筆就好，試驗用
+python manage.py 教典音檔2匯入 # 完整匯入
+# python manage.py 教典音檔2匯入 --匯入幾筆 100 # 匯入100筆就好，試驗用
+```
 
-## 臺語/閩南語
 ### [臺灣閩南語常用詞辭典](https://github.com/Taiwanese-Corpus/moedict-data-twblg/tree/gh-pages/%E8%BD%89%E5%88%B0%E8%87%BA%E7%81%A3%E8%A8%80%E8%AA%9E%E8%B3%87%E6%96%99%E5%BA%AB)
 * xls→臺灣言語資料庫yaml
 ```bash
