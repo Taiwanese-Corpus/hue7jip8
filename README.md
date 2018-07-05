@@ -20,6 +20,8 @@ python manage.py 族語辭典2匯入 Pangcah
 
 ## 台語
 ### 教典詞條音檔
+形式：全漢、全羅
+詞數：
 語者：王秀容
 ```
 python manage.py 教典音檔0下載 dropbox # 20160926掠的版本
@@ -30,8 +32,15 @@ python manage.py 教典音檔2匯入 # 完整匯入
 # python manage.py 教典音檔2匯入 --匯入幾筆 100 # 匯入100筆就好，試驗用
 ```
 
+### [臺灣閩南語常用詞辭典-例句](https://github.com/g0v/moedict-data-twblg/tree/master/uni)
+形式：全漢、全羅
+句數：13835（2018/07/05）
+```
+python manage.py 教典例句
+```
+
 ### [新北市900例句](https://github.com/Taiwanese-Corpus/Sin1pak8tshi7_2015_900-le7ku3)
-型式：全漢、全羅
+形式：全漢、全羅
 句數：150句
 語者：王秀容
 ```
@@ -40,8 +49,30 @@ python manage.py 新北市900例句 --頻率 16000 # 原始音檔頻率44100Hz
 準做欲用秀容老師的聲，請配合教典做伙用，無訓練會[產生錯誤](https://github.com/sih4sing5hong5/hue7jip8/pull/7#issuecomment-298552263)
 
 
-### 服務文件
+### [TGB通訊](https://github.com/sih4sing5hong5/huan1-ik8_gian2-kiu3#%E6%8F%90%E8%91%97tgb%E5%B9%B3%E8%A1%8C%E8%AA%9E%E6%96%99)
+形式：漢羅、華語平行語料
+句數：35017（2018/07/05）
+```
+python manage.py TGB通訊
+```
 
+### [iCorpus台華平行新聞語料庫](http://icorpus.iis.sinica.edu.tw/)
+形式：全羅、華語平行語料
+句數：83544（2018/07/05）
+```bash
+python manage.py icorpus臺華平行新聞語料庫
+```
+
+### [教育部詞彙分級計劃](https://詞彙分級.意傳.台灣/)
+形式：全漢、全羅
+句數：61354句（2018/07/05）
+```
+python manage.py 詞彙分級
+```
+
+
+
+### 服務文件
 
 
 ## 臺語/閩南語
@@ -51,6 +82,13 @@ python manage.py 新北市900例句 --頻率 16000 # 原始音檔頻率44100Hz
 python manage.py 匯入資料 https://Taiwanese-Corpus.github.io/moedict-data-twblg/轉到臺灣言語資料庫/資料/xls整理.yaml https://Taiwanese-Corpus.github.io/moedict-data-twblg/轉到臺灣言語資料庫/資料/異用字.yaml
 ```
 
+### [台文/華文線頂辭典](https://github.com/Taiwanese-Corpus/Tinn-liong-ui_2000_taihoa-dictionary)
+形式：台華英辭典
+詞數：
+```
+python manage.py 台華辭典
+```
+
 ### [臺灣閩南語卡拉OK正字字表](https://github.com/Taiwanese-Corpus/moe_minkalaok)
   * pdf→純文字→臺灣言語資料庫yaml
   * 臺語→臺語
@@ -58,7 +96,7 @@ python manage.py 匯入資料 https://Taiwanese-Corpus.github.io/moedict-data-tw
 python manage.py 匯入資料 https://Taiwanese-Corpus.github.io/moe_minkalaok/閩南語卡拉OK正字字表.yaml
 ```
 
-### [iCorpus臺華平行新聞語料庫漢字臺羅版](https://github.com/Taiwanese-Corpus/icorpus_ka1_han3-ji7) 
+### [iCorpus台華平行新聞語料庫漢字臺羅版](https://github.com/Taiwanese-Corpus/icorpus_ka1_han3-ji7) 
   * 純文字→臺灣言語資料庫yaml
   * 白話字→全漢全羅
 ```bash
@@ -93,7 +131,7 @@ python manage.py 匯入資料 https://Taiwanese-Corpus.github.io/Linya-Huang_201
 ### [臺語國校仔課本](https://github.com/Taiwanese-Corpus/kok4hau7-kho3pun2)
   * 允言整理過的doc→json→臺灣言語資料庫yaml
   * 全漢全羅
-  * `https://taiwanese-corpus.github.io/kok4hau7-kho3pun2/臺語國校仔課本.yaml`
+  0* `https://taiwanese-corpus.github.io/kok4hau7-kho3pun2/臺語國校仔課本.yaml`
 
 ### [新約聖經語料](https://github.com/Taiwanese-Corpus/Pakhelke-1916_KoTan-1975_hiantaiekpun-2008_taiwanese-bible)
   * 允言整理過的doc→json→臺灣言語資料庫yaml
@@ -109,8 +147,6 @@ python manage.py 匯入資料 https://Taiwanese-Corpus.github.io/Linya-Huang_201
 * [駱嘉鵬老師華語臺語客語文件-字典、對應表](https://github.com/Taiwanese-Corpus/Loh_2004_hanyu-document)
   * xls
 * [Embree台英辭典](https://github.com/Taiwanese-Corpus/Bernard-L.M.-Embree_1973_A-Dictionary-of-Southern-Min)
-  * xls
-* [台文/華文線頂辭典](https://github.com/Taiwanese-Corpus/Tinn-liong-ui_2000_taihoa-dictionary)
   * xls
 * [廈英大辭典](https://github.com/Taiwanese-Corpus/Carstairs-Douglas_1873_chinese-english-dictionary)
   * doc→csv
