@@ -1,8 +1,12 @@
+from unittest.case import skip
+
+from django.core.management import call_command
 from django.test.testcases import TestCase
 from 臺灣言語資料庫.資料模型 import 外語表
 from 臺灣言語資料庫.資料模型 import 文本表
 from 匯入.台華辭典 import 下載
 from 匯入.台華辭典 import 匯入一筆
+from 臺灣言語服務.models import 訓練過渡格式
 
 # 測試：
 # 台華下載
@@ -32,6 +36,11 @@ class 台華試驗(TestCase):
             'freq': '536',
             'pos_h': 'VH'
         }
+
+    @skip('舊資料庫進度傷慢')
+    def test句數正確(self):
+        call_command('台華辭典')
+        self.assertGreater(訓練過渡格式.資料數量(), 900000)
 
     def test下載詞目數正確(self):
         台華辭典陣列 = 下載()
