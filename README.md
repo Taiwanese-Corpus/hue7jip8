@@ -10,39 +10,29 @@
 ## 台語
 
 ### [臺灣閩南語常用詞辭典-例句](https://github.com/g0v/moedict-data-twblg/tree/master/uni)
-形式：全漢、全羅
-句數：13835（2018/07/05）
+- 形式：全漢、全羅
+- 句數：13835（2018/07/05）
 ```
 python manage.py 教典例句
 ```
 
-### [新北市900例句](https://github.com/Taiwanese-Corpus/Sin1pak8tshi7_2015_900-le7ku3)
-形式：全漢、全羅
-句數：150句
-語者：王秀容
-```
-python manage.py 新北市900例句 --頻率 16000 # 原始音檔頻率44100Hz
-```
-準做欲用秀容老師的聲，請配合教典做伙用，無訓練會[產生錯誤](https://github.com/sih4sing5hong5/hue7jip8/pull/7#issuecomment-298552263)
-
-
 ### [TGB通訊](https://github.com/sih4sing5hong5/huan1-ik8_gian2-kiu3#%E6%8F%90%E8%91%97tgb%E5%B9%B3%E8%A1%8C%E8%AA%9E%E6%96%99)
-形式：漢羅、華語平行語料
-句數：35017（2018/07/05）
+- 形式：漢羅、華語平行語料
+- 句數：35017（2018/07/05）
 ```
 python manage.py TGB通訊
 ```
 
 ### [iCorpus台華平行新聞語料庫](http://icorpus.iis.sinica.edu.tw/)
-形式：全羅、華語平行語料
-句數：83544（2018/07/05）
+- 形式：全羅、華語平行語料
+- 句數：83544（2018/07/05）
 ```bash
 python manage.py icorpus臺華平行新聞語料庫
 ```
 
 ### [教育部詞彙分級計劃](https://詞彙分級.意傳.台灣/)
-形式：全漢、全羅
-句數：61354句（2018/07/05）
+- 形式：全漢、全羅
+- 句數：61354句（2018/07/05）
 ```
 python manage.py 詞彙分級
 ```
@@ -62,9 +52,9 @@ python manage.py 族語辭典2匯入 Pangcah
 
 ## 台語
 ### 教典詞條音檔
-形式：全漢、全羅
-詞數：
-語者：王秀容
+- 形式：全漢、全羅
+- 詞數：
+- 語者：王秀容
 ```
 python manage.py 教典音檔0下載 dropbox # 20160926掠的版本
 # python manage.py 教典音檔0下載 官網沓沓掠 # 較慢，愛一工
@@ -73,6 +63,15 @@ python manage.py 教典音檔1轉檔 # 轉全部mp3音檔做16000Hz的wav
 python manage.py 教典音檔2匯入 # 完整匯入
 # python manage.py 教典音檔2匯入 --匯入幾筆 100 # 匯入100筆就好，試驗用
 ```
+
+### [新北市900例句](https://github.com/Taiwanese-Corpus/Sin1pak8tshi7_2015_900-le7ku3)
+- 形式：全漢、全羅
+- 句數：150句
+- 語者：王秀容
+```
+python manage.py 新北市900例句 --頻率 16000 # 原始音檔頻率44100Hz
+```
+準做欲用秀容老師的聲，請配合教典做伙用，無訓練會[產生錯誤](https://github.com/sih4sing5hong5/hue7jip8/pull/7#issuecomment-298552263)
 
 ### [臺灣閩南語常用詞辭典](https://github.com/Taiwanese-Corpus/moedict-data-twblg/tree/gh-pages/%E8%BD%89%E5%88%B0%E8%87%BA%E7%81%A3%E8%A8%80%E8%AA%9E%E8%B3%87%E6%96%99%E5%BA%AB)
 * xls→臺灣言語資料庫yaml
