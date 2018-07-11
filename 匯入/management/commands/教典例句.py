@@ -15,7 +15,7 @@ class Command(BaseCommand):
     例句網址 = 'https://github.com/g0v/moedict-data-twblg/raw/master/uni/%E4%BE%8B%E5%8F%A5.csv'
 
     公家內容 = {
-        '來源': 'icorpus臺華平行新聞語料庫',
+        '來源': '教典例句',
         '種類': '語句',
     }
 
