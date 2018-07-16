@@ -1,4 +1,4 @@
-# 匯入語料
+# Huē-ji̍p
 [![PyPI version](https://badge.fury.io/py/hue7jip8.svg)](https://badge.fury.io/py/hue7jip8)
 [![Build Status](https://travis-ci.org/Taiwanese-Corpus/hue7jip8.svg?branch=master)](https://travis-ci.org/Taiwanese-Corpus/hue7jip8)
 [![Coverage Status](https://coveralls.io/repos/github/Taiwanese-Corpus/hue7jip8/badge.svg?branch=master)](https://coveralls.io/github/Taiwanese-Corpus/hue7jip8?branch=master)
@@ -86,11 +86,11 @@ python manage.py 匯入資料 https://Taiwanese-Corpus.github.io/moedict-data-tw
 python manage.py 台華辭典
 ```
 
-### [臺灣閩南語卡拉OK正字字表](https://github.com/Taiwanese-Corpus/moe_minkalaok)
+### [臺灣閩南語卡拉OK正字字表](https://github.com/Taiwanese-Corpus/moe_minkalaok)
   * pdf→純文字→臺灣言語資料庫yaml
   * 臺語→臺語
 ```bash
-python manage.py 匯入資料 https://Taiwanese-Corpus.github.io/moe_minkalaok/閩南語卡拉OK正字字表.yaml
+python manage.py 匯入資料 https://Taiwanese-Corpus.github.io/moe_minkalaok/閩南語卡拉OK正字字表.yaml
 ```
 
 ### [iCorpus台華平行新聞語料庫漢字臺羅版](https://github.com/Taiwanese-Corpus/icorpus_ka1_han3-ji7) 
