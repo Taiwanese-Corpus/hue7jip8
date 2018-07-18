@@ -3,19 +3,18 @@ import json
 import ssl
 from urllib.parse import quote
 
-from django.core.management.base import BaseCommand
-
 
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 from 臺灣言語服務.models import 訓練過渡格式
 from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
 from 臺灣言語工具.解析整理.型態錯誤 import 型態錯誤
+from 匯入.指令 import 匯入枋模
 
 
 ssl.match_hostname = lambda cert, hostname: True
 
 
-class Command(BaseCommand):
+class Command(匯入枋模):
     help = 'https://詞彙分級.意傳.台灣'
     domain = 'xn--kbr112a4oa73rtw5adwqr1d.xn--v0qr21b.xn--kpry57d'
     網址 = '/匯出資料庫'
@@ -25,17 +24,7 @@ class Command(BaseCommand):
         '種類': '語句',
     }
 
-    def add_arguments(self, parser):
-        parser.add_argument(
-            '--匯入幾筆',
-            type=int,
-            default=100000,
-            help='試驗用，免一擺全匯'
-        )
-
-    def handle(self, *args, **參數):
-        self.stdout.write('資料數量：{}'.format(訓練過渡格式.資料數量()))
-
+    def 全部資料(self, *args, **參數):
         全部資料 = []
         匯入數量 = 0
         for 一篇 in self._全部資料():
@@ -57,15 +46,10 @@ class Command(BaseCommand):
                     )
 
             匯入數量 += 1
-            if 匯入數量 % 100 == 0:
+            if 匯入數量 % 1000 == 0:
                 self.stdout.write('匯入 {} 篇'.format(匯入數量))
-            if 匯入數量 == 參數['匯入幾筆']:
-                break
 
-        self.stdout.write('檢查格式了匯入')
-        訓練過渡格式.加一堆資料(全部資料)
-
-        self.stdout.write('資料數量：{}'.format(訓練過渡格式.資料數量()))
+        return 全部資料
 
     def _全部資料(self):
         conn = HTTPSConnection(self.domain)

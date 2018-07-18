@@ -4,15 +4,14 @@ from itertools import chain
 import re
 from urllib.request import urlopen
 
-from django.core.management.base import BaseCommand
-
 
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 from 臺灣言語服務.models import 訓練過渡格式
 from 匯入.教典 import 字詞抑是語句
+from 匯入.指令 import 匯入枋模
 
 
-class Command(BaseCommand):
+class Command(匯入枋模):
     help = 'https://github.com/g0v/moedict-data-twblg/。詞條kah又見音'
 
     公家內容 = {
@@ -35,17 +34,7 @@ class Command(BaseCommand):
         github網址 + '%E4%BE%8B%E5%8F%A5.csv'
     )
 
-    def handle(self, *args, **參數):
-        self.stdout.write('資料數量：{}'.format(訓練過渡格式.資料數量()))
-
-        全部資料 = self.全部資料()
-
-        self.stdout.write('檢查格式了匯入')
-        訓練過渡格式.加一堆資料(全部資料)
-
-        self.stdout.write('資料數量：{}'.format(訓練過渡格式.資料數量()))
-
-    def 全部資料(self):
+    def 全部資料(self, *args, **參數):
         全部資料 = []
         匯入數量 = 0
         for 漢字, 羅馬字 in chain(self.詞目總檔(), self.又見音表()):
