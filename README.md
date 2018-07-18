@@ -9,6 +9,13 @@
 
 ## 台語
 
+### [臺灣閩南語常用詞辭典-詞條](https://github.com/g0v/moedict-data-twblg/tree/master/uni)
+- 形式：全漢、全羅
+- 句數：28830（2018/07/18）
+```
+python manage.py 教典詞條
+```
+
 ### [臺灣閩南語常用詞辭典-例句](https://github.com/g0v/moedict-data-twblg/tree/master/uni)
 - 形式：全漢、全羅
 - 句數：13835（2018/07/05）
@@ -73,11 +80,6 @@ python manage.py 新北市900例句 --頻率 16000 # 原始音檔頻率44100Hz
 ```
 準做欲用秀容老師的聲，請配合教典做伙用，無訓練會[產生錯誤](https://github.com/sih4sing5hong5/hue7jip8/pull/7#issuecomment-298552263)
 
-### [臺灣閩南語常用詞辭典](https://github.com/Taiwanese-Corpus/moedict-data-twblg/tree/gh-pages/%E8%BD%89%E5%88%B0%E8%87%BA%E7%81%A3%E8%A8%80%E8%AA%9E%E8%B3%87%E6%96%99%E5%BA%AB)
-* xls→臺灣言語資料庫yaml
-```bash
-python manage.py 匯入資料 https://Taiwanese-Corpus.github.io/moedict-data-twblg/轉到臺灣言語資料庫/資料/xls整理.yaml https://Taiwanese-Corpus.github.io/moedict-data-twblg/轉到臺灣言語資料庫/資料/異用字.yaml
-```
 
 ### [台文/華文線頂辭典](https://github.com/Taiwanese-Corpus/Tinn-liong-ui_2000_taihoa-dictionary)
 形式：台華英辭典

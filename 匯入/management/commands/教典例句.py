@@ -8,6 +8,7 @@ from django.core.management.base import BaseCommand
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 from 臺灣言語服務.models import 訓練過渡格式
+from 匯入.教典 import 字詞抑是語句
 
 
 class Command(BaseCommand):
@@ -16,7 +17,7 @@ class Command(BaseCommand):
 
     公家內容 = {
         '來源': '教典例句',
-        '種類': '語句',
+        '年代': '2018',
     }
 
     def add_arguments(self, parser):
@@ -32,13 +33,12 @@ class Command(BaseCommand):
 
         全部資料 = []
         匯入數量 = 0
-        年代 = '2018'
         for 台語物件, 華語物件 in self._全部資料():
             全部資料.append(
                 訓練過渡格式(
                     文本=台語物件.看分詞(),
                     外文=華語物件.看分詞(),
-                    年代=年代,
+                    種類=字詞抑是語句(台語物件),
                     **self.公家內容
                 )
             )
