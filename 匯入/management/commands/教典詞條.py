@@ -25,7 +25,8 @@ class Command(BaseCommand):
     )
     詞目總檔屬性網址 = (
         github網址 +
-        '%E8%A9%9E%E7%9B%AE%E7%B8%BD%E6%AA%94.%E8%A9%9E%E7%9B%AE%E5%B1%AC%E6%80%A7%E5%B0%8D%E7%85%A7.csv'
+        '%E8%A9%9E%E7%9B%AE%E7%B8%BD%E6%AA%94'
+        '.%E8%A9%9E%E7%9B%AE%E5%B1%AC%E6%80%A7%E5%B0%8D%E7%85%A7.csv'
     )
     又音網址 = (
         github網址 + '%E5%8F%88%E9%9F%B3.csv'
