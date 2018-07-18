@@ -2,16 +2,15 @@ from csv import DictReader
 import io
 from urllib.request import urlopen
 
-from django.core.management.base import BaseCommand
-
 
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 from 臺灣言語服務.models import 訓練過渡格式
 from 匯入.教典 import 字詞抑是語句
+from 匯入.指令 import 匯入枋模
 
 
-class Command(BaseCommand):
+class Command(匯入枋模):
     help = 'https://github.com/g0v/moedict-data-twblg/'
     例句網址 = 'https://github.com/g0v/moedict-data-twblg/raw/master/uni/%E4%BE%8B%E5%8F%A5.csv'
 
@@ -20,17 +19,7 @@ class Command(BaseCommand):
         '年代': '2018',
     }
 
-    def add_arguments(self, parser):
-        parser.add_argument(
-            '--匯入幾筆',
-            type=int,
-            default=100000,
-            help='試驗用，免一擺全匯'
-        )
-
-    def handle(self, *args, **參數):
-        self.stdout.write('資料數量：{}'.format(訓練過渡格式.資料數量()))
-
+    def 全部資料(self, *args, **參數):
         全部資料 = []
         匯入數量 = 0
         for 台語物件, 華語物件 in self._全部資料():
@@ -44,15 +33,10 @@ class Command(BaseCommand):
             )
 
             匯入數量 += 1
-            if 匯入數量 % 100 == 0:
+            if 匯入數量 % 1000 == 0:
                 self.stdout.write('匯入 {} 筆'.format(匯入數量))
-            if 匯入數量 == 參數['匯入幾筆']:
-                break
 
-        self.stdout.write('檢查格式了匯入')
-        訓練過渡格式.加一堆資料(全部資料)
-
-        self.stdout.write('資料數量：{}'.format(訓練過渡格式.資料數量()))
+        return 全部資料
 
     @classmethod
     def _全部資料(cls):
