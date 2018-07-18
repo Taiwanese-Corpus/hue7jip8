@@ -71,6 +71,7 @@ class Command(BaseCommand):
                             .轉音(臺灣閩南語羅馬字拼音)
                         )
                     except Exception as 錯誤:
+                        print(row)
                         print(錯誤)
                         continue
                     華語物件 = 拆文分析器.建立句物件(華語翻譯)
