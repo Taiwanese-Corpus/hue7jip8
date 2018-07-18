@@ -10,7 +10,7 @@ env:
 - TOX_ENV=sin1pak8tshi7-900-le7ku3
 - TOX_ENV=taihoa-dictionary
 - TOX_ENV=icorpus
-- TOX_ENV=教典例句
+- TOX_ENV=教典詞條例句
 - TOX_ENV=TGB
 - TOX_ENV=詞彙分級
 addons:
