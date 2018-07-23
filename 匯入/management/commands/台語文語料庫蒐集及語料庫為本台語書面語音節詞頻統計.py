@@ -1,6 +1,6 @@
 from csv import DictReader
 import io
-from os import walk, makedirs
+from os import walk
 from os.path import join, basename, dirname
 from tempfile import TemporaryDirectory
 from urllib.request import urlopen
@@ -8,10 +8,9 @@ from zipfile import ZipFile
 
 
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
-from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 from 臺灣言語服務.models import 訓練過渡格式
-from 匯入.教典 import 字詞抑是語句
 from 匯入.指令 import 匯入枋模
+from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
 
 
 class Command(匯入枋模):
@@ -89,15 +88,19 @@ class Command(匯入枋模):
 
                     for 一逝 in 檔.readlines():
                         文本資料 = 一逝.strip()
-                        print(一逝)
                         if len(文本資料) > 0:
-                            資料 = {
-                                '來源': '{}-{}-{}-{}'.format(
-                                    self.來源, 類, 來源內容['作者'], 來源內容['類別']
-                                ),
-                                '文本': 文本資料,
-                            }
-                            yield 資料
+                            try:
+                                台文 = 拆文分析器.建立句物件(文本資料).看語句()
+                            except 解析錯誤 as 錯誤:
+                                print(錯誤, 文本資料)
+                            else:
+                                yield {
+                                    '來源': '{}-{}-{}-{}'.format(
+                                        self.來源, 類, 來源內容['作者'], 來源內容['類別']
+                                    ),
+                                    '文本': 台文,
+                                }
+
         if len(目錄) > 0:
             print('目錄賰：', 目錄.keys(), self.stderr)
             raise RuntimeError('表有物件無對著！！')
