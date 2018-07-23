@@ -14,6 +14,7 @@ env:
 - TOX_ENV=TGB
 - TOX_ENV=詞彙分級
 - TOX_ENV=itaigi
+- TOX_ENV=台語文語料庫蒐集及語料庫為本台語書面語音節詞頻統計
 addons:
   apt:
     sources:
