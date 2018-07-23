@@ -71,8 +71,8 @@ class Command(匯入枋模):
                 for 欄位, 內容 in row.items():
                     try:
                         資料[self.欄位表[欄位]] = 內容
-                    except:
-                        pass
+                    except KeyError:
+                        'Ki-thann na-ui ing be tioh.'
                 資料['男女'] = self.性別表[資料['男女']]
                 檔名 = 資料.pop('檔名')
                 目錄[檔名] = 資料
@@ -81,11 +81,11 @@ class Command(匯入枋模):
                 with open(join(所在, 檔名)) as 檔:
                     try:
                         來源內容 = 目錄.pop(檔名[:-4])
-                    except:
+                        作者 = 來源內容['作者']
+                        類別 = 來源內容['類別']
+                    except KeyError:
                         作者 = basename(所在)
                         類別 = basename(dirname(所在))
-                        來源內容 = {'作者': 作者, '類別': 類別}
-
                     for 一逝 in 檔.readlines():
                         文本資料 = 一逝.strip()
                         if len(文本資料) > 0:
@@ -96,7 +96,7 @@ class Command(匯入枋模):
                             else:
                                 yield {
                                     '來源': '{}-{}-{}-{}'.format(
-                                        self.來源, 類, 來源內容['作者'], 來源內容['類別']
+                                        self.來源, 類, 作者, 類別
                                     ),
                                     '文本': 台文,
                                 }
