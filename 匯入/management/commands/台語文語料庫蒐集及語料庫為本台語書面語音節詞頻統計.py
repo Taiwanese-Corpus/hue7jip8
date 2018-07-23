@@ -1,6 +1,6 @@
 from csv import DictReader
 import io
-from os import walk
+from os import walk, makedirs
 from os.path import join, basename, dirname
 from tempfile import TemporaryDirectory
 from urllib.request import urlopen
@@ -21,6 +21,7 @@ class Command(匯入枋模):
     來源 = '台語文語料庫蒐集及語料庫為本台語書面語音節詞頻統計',
     公家內容 = {
         '年代': '2005',
+        '種類': '語句',
     }
     欄位表 = {
         'luipiat': '類別',
@@ -37,8 +38,8 @@ class Command(匯入枋模):
         匯入數量 = 0
         for 資料 in self._全部資料():
             print(
-                    資料,
-                    )
+                資料,
+            )
             全部資料.append(
                 訓練過渡格式(
                     **資料,
@@ -58,8 +59,9 @@ class Command(匯入枋模):
                 with io.BytesIO(網路檔.read()) as 檔:
                     with ZipFile(檔) as 資料:
                         資料.extractall(資料夾)
-            yield from self.轉規類(join(資料夾, '轉換後資料'), 'HL')
-            yield from self.轉規類(join(資料夾, '轉換後資料'), 'POJ')
+            實際資料夾 = join(資料夾, 'Ungian_2005_guliau-supin-master/')
+            yield from self.轉規類(join(實際資料夾, '轉換後資料'), 'HL')
+            yield from self.轉規類(join(實際資料夾, '轉換後資料'), 'POJ')
 
     def 轉規類(self, 語料資料夾, 類):
         目錄 = {}
