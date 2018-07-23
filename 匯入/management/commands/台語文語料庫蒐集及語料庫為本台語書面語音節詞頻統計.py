@@ -36,9 +36,6 @@ class Command(匯入枋模):
         全部資料 = []
         匯入數量 = 0
         for 資料 in self._全部資料():
-            print(
-                資料,
-            )
             全部資料.append(
                 訓練過渡格式(
                     **資料,
