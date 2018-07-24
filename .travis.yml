@@ -14,6 +14,7 @@ env:
 - TOX_ENV=TGB
 - TOX_ENV=詞彙分級
 - TOX_ENV=itaigi
+- TOX_ENV=台灣白話基礎語句
 addons:
   apt:
     sources:
