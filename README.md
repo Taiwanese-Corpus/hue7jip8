@@ -49,6 +49,14 @@ python manage.py icorpus臺華平行新聞語料庫
 python manage.py 詞彙分級
 ```
 
+### [台語文語料庫蒐集及語料庫為本台語書面語音節詞頻統計](http://ip194097.ntcu.edu.tw/giankiu/keoe/KKH/guliau-supin/guliau-supin.asp)
+- 形式：漢羅抑是全羅
+- 段數：193071段（2018/07/24）
+- 語料：[Github](https://github.com/Taiwanese-Corpus/Ungian_2005_guliau-supin)
+```
+python manage.py 教育部臺灣閩南語字詞頻調查工作
+``` 
+
 ### [教育部臺灣閩南語字詞頻調查工作](http://ip194097.ntcu.edu.tw/Ungian/Chokphin/Lunbun/KIPsupin/KIPsupin.asp)
 - 形式：漢羅、全羅
 - 段數：59300段，其中53593段對會齊（2018/07/24）
@@ -136,16 +144,6 @@ python manage.py 匯入資料 https://Taiwanese-Corpus.github.io/icorpus_ka1_han
 python manage.py 匯入資料 https://Taiwanese-Corpus.github.io/Linya-Huang_2014_taiwanesecharacters/咱的字你敢捌.yaml
 ```
 
-### [台語文語料庫蒐集及語料庫為本台語書面語音節詞頻統計](https://github.com/Taiwanese-Corpus/Ungian_2005_guliau-supin)
-  * 純文字→臺灣言語工具分詞
-  * 201466筆文本資料
-  * `https://taiwanese-corpus.github.io/Ungian_2005_guliau-supin/台語文語料庫蒐集及語料庫為本台語書面語音節詞頻統計.yaml`
-
-### [教育部臺灣閩南語字詞頻調查工作](https://github.com/Taiwanese-Corpus/Ungian_2009_KIPsupin)
-  * 允言整理過的doc→json→臺灣言語資料庫yaml
-  * 全漢全羅
-  * 59558筆文本資料
-  * `https://taiwanese-corpus.github.io/Ungian_2009_KIPsupin/教育部臺灣閩南語字詞頻調查工作.yaml`
 
 ### [臺語國校仔課本](https://github.com/Taiwanese-Corpus/kok4hau7-kho3pun2)
   * 允言整理過的doc→json→臺灣言語資料庫yaml
