@@ -15,6 +15,7 @@ env:
 - TOX_ENV=詞彙分級
 - TOX_ENV=教育部臺灣閩南語字詞頻調查工作
 - TOX_ENV=itaigi
+- TOX_ENV=台灣植物名彙
 - TOX_ENV=台灣白話基礎語句
 addons:
   apt:
