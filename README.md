@@ -57,6 +57,14 @@ python manage.py 詞彙分級
 python manage.py 教育部臺灣閩南語字詞頻調查工作
 ``` 
 
+### [台灣白話基礎語句](http://ip194097.ntcu.edu.tw/memory/TGB/thak.asp?id=862)
+- 形式：全漢、全羅
+- 句數：61354句（2018/07/05）
+- 語料：[Github](https://github.com/Taiwanese-Corpus/Ko-Chek-hoan-Tan-Pang-tin_1956_Basic-Vocabulary-for-Colloquial-Taiwanese)
+```
+python manage.py 台灣白話基礎語句
+```
+
 
 ### 服務文件
 ## 族語
