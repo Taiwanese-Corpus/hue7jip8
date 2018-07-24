@@ -41,21 +41,17 @@ class Command(匯入枋模):
 
     def 全部資料(self, *args, **參數):
         self.錯誤全印 = not 參數['錯誤印部份就好']
-        全部資料 = []
+
         匯入數量 = 0
         for 資料 in self._全部資料():
-            全部資料.append(
-                訓練過渡格式(
-                    **資料,
-                    **self.公家內容
-                )
+            yield 訓練過渡格式(
+                **資料,
+                **self.公家內容
             )
 
             匯入數量 += 1
             if 匯入數量 % 1000 == 0:
                 self.stdout.write('匯入 {} 筆'.format(匯入數量))
-
-        return 全部資料
 
     def _全部資料(self):
         with TemporaryDirectory() as 資料夾:
@@ -98,9 +94,9 @@ class Command(匯入枋模):
                                 台文 = 拆文分析器.建立句物件(文本資料).看分詞()
                             except 解析錯誤 as 錯誤:
                                 if self.錯誤全印:
-                                    print(錯誤, file=self.stderr)
+                                    self.stderr.write(錯誤)
                                 else:
-                                    print(str(錯誤)[:40], file=self.stderr)
+                                    self.stderr.write(str(錯誤)[:40])
                             else:
                                 yield {
                                     '來源': '{}-{}'.format(
@@ -110,4 +106,6 @@ class Command(匯入枋模):
                                 }
 
         if len(目錄) > 0:
-            print('表有物件無對著！！目錄賰：'.format(目錄.keys()), file=self.stderr)
+            self.stderr.write(
+                '表有物件無對著！！目錄賰：'.format(目錄.keys()),
+            )
