@@ -18,7 +18,8 @@ class Command(匯入枋模):
         '年代': '1956',
     }
     github網址 = (
-        'https://github.com/Taiwanese-Corpus/Ko-Chek-hoan-Tan-Pang-tin_1956_Basic-Vocabulary-for-Colloquial-Taiwanese/'
+        'https://github.com/Taiwanese-Corpus/'
+        'Ko-Chek-hoan-Tan-Pang-tin_1956_Basic-Vocabulary-for-Colloquial-Taiwanese/'
         'raw/master/ChhoeTaigi_TaioanPehoeKichhooGiku.csv'
     )
 
@@ -57,4 +58,4 @@ class Command(匯入枋模):
                             except 解析錯誤 as 錯誤:
                                 print(錯誤)
                             else:
-                                yield 台文,拆文分析器.建立句物件(hoa).看分詞()
+                                yield 台文, 拆文分析器.建立句物件(hoa).看分詞()
