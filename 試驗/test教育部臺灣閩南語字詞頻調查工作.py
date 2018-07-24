@@ -11,5 +11,5 @@ class KIPsu試驗(TestCase):
         return super().setUpClass()
 
     def test數量(self):
-        self.assertGreater(訓練過渡格式.資料數量(), 2000000)
+        self.assertGreater(訓練過渡格式.資料數量(), 50000)
 

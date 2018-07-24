@@ -44,6 +44,13 @@ python manage.py icorpus臺華平行新聞語料庫
 python manage.py 詞彙分級
 ```
 
+### [教育部臺灣閩南語字詞頻調查工作](http://ip194097.ntcu.edu.tw/Ungian/Chokphin/Lunbun/KIPsupin/KIPsupin.asp)
+- 形式：漢羅、全羅
+- 段數：59300段，其中53593段對會齊（2018/07/24）
+- 語料：[Github](https://github.com/Taiwanese-Corpus/Ungian_2009_KIPsupin)
+```
+python manage.py 教育部臺灣閩南語字詞頻調查工作
+``` 
 
 
 ### 服務文件
