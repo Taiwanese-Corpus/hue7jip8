@@ -9,23 +9,26 @@
 
 ## 台語
 
-### [臺灣閩南語常用詞辭典-詞條](https://github.com/g0v/moedict-data-twblg/tree/master/uni)
+### [臺灣閩南語常用詞辭典-詞條](http://twblg.dict.edu.tw/holodict_new/index.htm)
 - 形式：全漢、全羅
 - 句數：28830（2018/07/18）
+- 語料：[Github](https://github.com/g0v/moedict-data-twblg/tree/master/uni)
 ```
 python manage.py 教典詞條
 ```
 
-### [臺灣閩南語常用詞辭典-例句](https://github.com/g0v/moedict-data-twblg/tree/master/uni)
+### [臺灣閩南語常用詞辭典-例句](http://twblg.dict.edu.tw/holodict_new/index.htm)
 - 形式：全漢、全羅
 - 句數：13835（2018/07/05）
+- 語料：[Github](https://github.com/g0v/moedict-data-twblg/tree/master/uni)
 ```
 python manage.py 教典例句
 ```
 
-### [TGB通訊](https://github.com/sih4sing5hong5/huan1-ik8_gian2-kiu3#%E6%8F%90%E8%91%97tgb%E5%B9%B3%E8%A1%8C%E8%AA%9E%E6%96%99)
+### [TGB通訊](http://taioanchouhap.pixnet.net/blog)
 - 形式：漢羅、華語平行語料
 - 句數：35017（2018/07/05）
+- 語料：[Github](https://github.com/sih4sing5hong5/huan1-ik8_gian2-kiu3#%E6%8F%90%E8%91%97tgb%E5%B9%B3%E8%A1%8C%E8%AA%9E%E6%96%99)
 ```
 python manage.py TGB通訊
 ```
@@ -33,6 +36,7 @@ python manage.py TGB通訊
 ### [iCorpus台華平行新聞語料庫](http://icorpus.iis.sinica.edu.tw/)
 - 形式：全羅、華語平行語料
 - 句數：83544（2018/07/05）
+- 語料：[Github](https://github.com/sih4sing5hong5/icorpus)
 ```bash
 python manage.py icorpus臺華平行新聞語料庫
 ```
@@ -40,10 +44,26 @@ python manage.py icorpus臺華平行新聞語料庫
 ### [教育部詞彙分級計劃](https://詞彙分級.意傳.台灣/)
 - 形式：全漢、全羅
 - 句數：61354句（2018/07/05）
+- 語料：[API](https://詞彙分級資料庫.意傳.台灣/匯出資料庫)
 ```
 python manage.py 詞彙分級
 ```
 
+### [教育部臺灣閩南語字詞頻調查工作](http://ip194097.ntcu.edu.tw/Ungian/Chokphin/Lunbun/KIPsupin/KIPsupin.asp)
+- 形式：漢羅、全羅
+- 段數：59300段，其中53593段對會齊（2018/07/24）
+- 語料：[Github](https://github.com/Taiwanese-Corpus/Ungian_2009_KIPsupin)
+```
+python manage.py 教育部臺灣閩南語字詞頻調查工作
+``` 
+
+### [台灣白話基礎語句](http://ip194097.ntcu.edu.tw/memory/TGB/thak.asp?id=862)
+- 形式：全漢、全羅
+- 句數：61354句（2018/07/05）
+- 語料：[Github](https://github.com/Taiwanese-Corpus/Ko-Chek-hoan-Tan-Pang-tin_1956_Basic-Vocabulary-for-Colloquial-Taiwanese)
+```
+python manage.py 台灣白話基礎語句
+```
 
 
 ### 服務文件
