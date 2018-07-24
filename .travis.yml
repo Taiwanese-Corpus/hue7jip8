@@ -13,6 +13,7 @@ env:
 - TOX_ENV=教典詞條例句
 - TOX_ENV=TGB
 - TOX_ENV=詞彙分級
+- TOX_ENV=教育部臺灣閩南語字詞頻調查工作
 - TOX_ENV=itaigi
 addons:
   apt:
