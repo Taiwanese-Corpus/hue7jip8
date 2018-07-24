@@ -89,7 +89,7 @@ class Command(匯入枋模):
                             try:
                                 台文 = 拆文分析器.建立句物件(文本資料).看分詞()
                             except 解析錯誤 as 錯誤:
-                                print(錯誤, 文本資料)
+                                print(錯誤)
                             else:
                                 yield {
                                     '來源': '{}-{}-{}-{}'.format(
@@ -99,5 +99,4 @@ class Command(匯入枋模):
                                 }
 
         if len(目錄) > 0:
-            print('目錄賰：', 目錄.keys(), self.stderr)
-            raise RuntimeError('表有物件無對著！！')
+            print('表有物件無對著！！目錄賰：', 目錄.keys(), self.stderr)
