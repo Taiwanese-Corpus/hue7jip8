@@ -9,7 +9,7 @@
 
 ## 台語
 
-### [臺灣閩南語常用詞辭典-詞條](https://github.com/g0v/moedict-data-twblg/tree/master/uni)
+### [臺灣閩南語常用詞辭典-詞條](http://twblg.dict.edu.tw/holodict_new/index.htm)
 - 形式：全漢、全羅
 - 句數：28830（2018/07/18）
 - 語料：[Github](https://github.com/g0v/moedict-data-twblg/tree/master/uni)
@@ -17,7 +17,7 @@
 python manage.py 教典詞條
 ```
 
-### [臺灣閩南語常用詞辭典-例句]
+### [臺灣閩南語常用詞辭典-例句](http://twblg.dict.edu.tw/holodict_new/index.htm)
 - 形式：全漢、全羅
 - 句數：13835（2018/07/05）
 - 語料：[Github](https://github.com/g0v/moedict-data-twblg/tree/master/uni)
