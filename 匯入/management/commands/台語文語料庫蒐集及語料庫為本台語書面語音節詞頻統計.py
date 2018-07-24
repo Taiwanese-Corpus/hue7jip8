@@ -35,12 +35,12 @@ class Command(匯入枋模):
     def add_arguments(self, parser):
         parser.add_argument(
             '--錯誤印部份就好',
-            action='store_false',
+            action='store_true',
             help='因為CI有限制輸出4M',
         )
 
     def 全部資料(self, *args, **參數):
-        self.錯誤印部份就好 = 參數['錯誤印部份就好']
+        self.錯誤全印 = not 參數['錯誤印部份就好']
         全部資料 = []
         匯入數量 = 0
         for 資料 in self._全部資料():
@@ -97,17 +97,17 @@ class Command(匯入枋模):
                             try:
                                 台文 = 拆文分析器.建立句物件(文本資料).看分詞()
                             except 解析錯誤 as 錯誤:
-                                if not self.錯誤印部份就好:
-                                    print(錯誤)
+                                if self.錯誤全印:
+                                    print(錯誤, file=self.stderr)
                                 else:
-                                    print(str(錯誤)[:100])
+                                    print(str(錯誤)[:40], file=self.stderr)
                             else:
                                 yield {
-                                    '來源': '{}-{}-{}-{}'.format(
+                                    '來源': '{}-{}'.format(
                                         self.來源, 類, 作者, 類別
                                     ),
                                     '文本': 台文,
                                 }
 
         if len(目錄) > 0:
-            print('表有物件無對著！！目錄賰：', 目錄.keys(), self.stderr)
+            print('表有物件無對著！！目錄賰：'.format(目錄.keys()), file=self.stderr)
