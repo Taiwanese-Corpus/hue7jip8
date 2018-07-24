@@ -3,7 +3,7 @@ from django.test.testcases import TestCase
 from 臺灣言語服務.models import 訓練過渡格式
 
 
-class 教典字詞抑是語句試驗(TestCase):
+class 台語文語料庫試驗(TestCase):
 
     @classmethod
     def setUpClass(cls):
