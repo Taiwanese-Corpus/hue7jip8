@@ -29,7 +29,7 @@ class Command(匯入枋模):
         for 台文 in self._全部資料():
             全部資料.append(
                 訓練過渡格式(
-                    文本=台文,
+                    文本=台文.看分詞(),
                     **self.公家內容
                 )
             )
@@ -54,12 +54,20 @@ class Command(匯入枋模):
         for 所在, _資料夾, 檔名陣列 in sorted(walk(語料資料夾)):
             for 檔名 in 檔名陣列:
                 with open(join(所在, 檔名)) as 檔:
-                    一篇 = json.load(檔)
-                for 一段 in 一篇:
+                    一檔 = json.load(檔)
+                for 一篇 in 一檔['資料']:
+                    一段 = 一篇['段']
                     for 漢羅, 羅 in 一段:
-                        try:
-                            台文 = 拆文分析器.建立句物件(漢羅, 羅)
-                        except 解析錯誤 as 錯誤:
-                            print(錯誤)
-                        else:
-                            yield 台文.看分詞()
+                        yield from self.轉物件(漢羅, 羅)
+
+    def 轉物件(self, 漢羅, 羅):
+        try:
+            yield 拆文分析器.建立句物件(漢羅, 羅)
+            return
+        except 解析錯誤 as 錯誤:
+            print(錯誤)
+        try:
+            yield 拆文分析器.建立句物件(羅)
+            return
+        except 解析錯誤 as 錯誤:
+            print(錯誤)
