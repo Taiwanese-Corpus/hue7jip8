@@ -7,7 +7,10 @@ class 台語文語料庫試驗(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        call_command('台語文語料庫蒐集及語料庫為本台語書面語音節詞頻統計')
+        call_command(
+            '台語文語料庫蒐集及語料庫為本台語書面語音節詞頻統計',
+            '--錯誤印部份就好'
+        )
         return super().setUpClass()
 
     def test數量(self):

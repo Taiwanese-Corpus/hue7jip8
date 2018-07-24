@@ -32,7 +32,15 @@ class Command(匯入枋模):
     }
     性別表 = {'b': '查某', 'p': '查甫', 'm': '毋知'}
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--錯誤印部份就好',
+            action='store_false',
+            help='因為CI有限制輸出4M',
+        )
+
     def 全部資料(self, *args, **參數):
+        self.錯誤印部份就好 = 參數['錯誤印部份就好']
         全部資料 = []
         匯入數量 = 0
         for 資料 in self._全部資料():
@@ -89,7 +97,10 @@ class Command(匯入枋模):
                             try:
                                 台文 = 拆文分析器.建立句物件(文本資料).看分詞()
                             except 解析錯誤 as 錯誤:
-                                print(錯誤)
+                                if not self.錯誤印部份就好:
+                                    print(錯誤)
+                                else:
+                                    print(str(錯誤)[:100])
                             else:
                                 yield {
                                     '來源': '{}-{}-{}-{}'.format(
