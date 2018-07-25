@@ -52,7 +52,6 @@ class Command(匯入枋模):
             匯入數量 += 1
             if 匯入數量 % 1000 == 0:
                 self.stdout.write('匯入 {} 筆'.format(匯入數量))
-                break
 
     def _全部資料(self):
         with TemporaryDirectory() as 資料夾:
