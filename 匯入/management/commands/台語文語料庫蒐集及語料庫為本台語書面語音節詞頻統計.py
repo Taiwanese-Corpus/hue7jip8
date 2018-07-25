@@ -17,7 +17,7 @@ class Command(匯入枋模):
     help = 'http://ip194097.ntcu.edu.tw/giankiu/keoe/KKH/guliau-supin/guliau-supin.asp'
     zip網址 = 'https://github.com/Taiwanese-Corpus/Ungian_2005_guliau-supin/archive/master.zip'
 
-    來源 = '台語文語料庫蒐集及語料庫為本台語書面語音節詞頻統計',
+    來源 = '台語文語料庫蒐集及語料庫為本台語書面語音節詞頻統計'
     公家內容 = {
         '年代': '2005',
         '種類': '語句',
@@ -52,6 +52,7 @@ class Command(匯入枋模):
             匯入數量 += 1
             if 匯入數量 % 1000 == 0:
                 self.stdout.write('匯入 {} 筆'.format(匯入數量))
+                break
 
     def _全部資料(self):
         with TemporaryDirectory() as 資料夾:
