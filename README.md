@@ -51,7 +51,7 @@ python manage.py 詞彙分級
 
 ### [台語文語料庫蒐集及語料庫為本台語書面語音節詞頻統計](http://ip194097.ntcu.edu.tw/giankiu/keoe/KKH/guliau-supin/guliau-supin.asp)
 - 形式：漢羅抑是全羅
-- 段數：193071段（2018/07/24）
+- 段數：193071段， 其中漢羅128505段、全羅64566段（2018/07/24）
 - 語料：[Github](https://github.com/Taiwanese-Corpus/Ungian_2005_guliau-supin)
 ```
 python manage.py 教育部臺灣閩南語字詞頻調查工作
