@@ -1,10 +1,6 @@
 import io
 import json
-from os import walk
-from os.path import join
-from tempfile import TemporaryDirectory
 from urllib.request import urlopen
-from zipfile import ZipFile
 
 
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
@@ -14,8 +10,11 @@ from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
 
 
 class Command(匯入枋模):
-    help = ''
-    zip網址 = ''
+    help = 'http://xdcm.nmtl.gov.tw/dadwt/pbk.asp'
+    json網址 = (
+        'https://github.com/Taiwanese-Corpus/nmtl_2006_dadwt/'
+        'raw/master/nmtl.json'
+    )
 
     公家內容 = {
         '來源': '台語文數位典藏資料庫',
@@ -41,24 +40,20 @@ class Command(匯入枋模):
         return 全部資料
 
     def _全部資料(self):
-        with TemporaryDirectory() as 資料夾:
-            with urlopen(self.zip網址) as 網路檔:
-                with io.BytesIO(網路檔.read()) as 檔:
-                    with ZipFile(檔) as 資料:
-                        資料.extractall(資料夾)
-            yield from self.規目錄(
-                join(資料夾, 'Ungian_2009_KIPsupin-master/', 'JSON格式資料')
-            )
+        for 漢羅, 羅 in self._全部漢羅():
+            try:
+                yield from self.轉物件(漢羅, 羅)
+            except ValueError:
+                'https://github.com/i3thuan5/tai5-uan5_gian5-gi2_kang1-ku7/issues/566'
+                pass
 
-    def 規目錄(self, 語料資料夾):
-        for 所在, _資料夾, 檔名陣列 in sorted(walk(語料資料夾)):
-            for 檔名 in 檔名陣列:
-                with open(join(所在, 檔名)) as 檔:
-                    一檔 = json.load(檔)
-                for 一篇 in 一檔['資料']:
-                    一段 = 一篇['段']
-                    for 漢羅, 羅 in 一段:
-                        yield from self.轉物件(漢羅, 羅)
+    def _全部漢羅(self):
+        with urlopen(self.json網址) as 檔:
+            with io.StringIO(檔.read().decode()) as 資料json:
+                for phinn in json.load(資料json):
+                    yield phinn['漢羅名'], phinn['全羅名']
+                    yield phinn['漢羅標'], phinn['全羅標']
+                    yield from phinn['資料']
 
     def 轉物件(self, 漢羅, 羅):
         try:
