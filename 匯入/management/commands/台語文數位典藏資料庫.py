@@ -22,22 +22,26 @@ class Command(匯入枋模):
         '種類': '語句',
     }
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--錯誤印部份就好',
+            action='store_true',
+            help='因為CI有限制輸出4M',
+        )
+
     def 全部資料(self, *args, **參數):
-        全部資料 = []
+        self.錯誤全印 = not 參數['錯誤印部份就好']
+
         匯入數量 = 0
         for 台文 in self._全部資料():
-            全部資料.append(
-                訓練過渡格式(
-                    文本=台文.看分詞(),
-                    **self.公家內容
-                )
+            yield 訓練過渡格式(
+                文本=台文.看分詞(),
+                **self.公家內容
             )
 
             匯入數量 += 1
             if 匯入數量 % 1000 == 0:
                 self.stdout.write('匯入 {} 筆'.format(匯入數量))
-
-        return 全部資料
 
     def _全部資料(self):
         for 漢羅, 羅 in self._全部漢羅():
@@ -60,9 +64,15 @@ class Command(匯入枋模):
             yield 拆文分析器.建立句物件(漢羅, 羅)
             return
         except 解析錯誤 as 錯誤:
-            print(錯誤)
+            if self.錯誤全印:
+                self.stderr.write(錯誤)
+            else:
+                self.stderr.write(str(錯誤)[:40])
         try:
             yield 拆文分析器.建立句物件(羅)
             return
         except 解析錯誤 as 錯誤:
-            print(錯誤)
+            if self.錯誤全印:
+                self.stderr.write(錯誤)
+            else:
+                self.stderr.write(str(錯誤)[:40])

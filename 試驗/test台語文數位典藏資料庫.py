@@ -7,8 +7,8 @@ class KIPsu試驗(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        call_command('台語文數位典藏資料庫')
+        call_command('台語文數位典藏資料庫', '--錯誤印部份就好')
         return super().setUpClass()
 
     def test數量(self):
-        self.assertGreater(訓練過渡格式.資料數量(), 200000)
+        self.assertGreater(訓練過渡格式.資料數量(), 60000)
