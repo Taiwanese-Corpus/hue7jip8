@@ -59,7 +59,7 @@ python manage.py 教育部臺灣閩南語字詞頻調查工作
 
 ### [台語文數位典藏資料庫](https://github.com/Taiwanese-Corpus/nmtl_2006_dadwt)
 - 形式：漢羅、全羅
-- 段數：段，其中段對會齊，段無法度對齊就用羅馬字（2018/07/29）
+- 段數：67005段，其中62246段對會齊，4759段無法度對齊就用羅馬字（2018/07/30）
 - 語料：[Github](https://github.com/Taiwanese-Corpus/nmtl_2006_dadwt)
 ```
 python manage.py 台語文數位典藏資料庫
