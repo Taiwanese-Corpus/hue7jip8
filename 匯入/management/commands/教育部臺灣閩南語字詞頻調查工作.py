@@ -24,21 +24,16 @@ class Command(匯入枋模):
     }
 
     def 全部資料(self, *args, **參數):
-        全部資料 = []
         匯入數量 = 0
         for 台文 in self._全部資料():
-            全部資料.append(
-                訓練過渡格式(
-                    文本=台文.看分詞(),
-                    **self.公家內容
-                )
+            yield 訓練過渡格式(
+                文本=台文.看分詞(),
+                **self.公家內容
             )
 
             匯入數量 += 1
             if 匯入數量 % 1000 == 0:
                 self.stdout.write('匯入 {} 筆'.format(匯入數量))
-
-        return 全部資料
 
     def _全部資料(self):
         with TemporaryDirectory() as 資料夾:

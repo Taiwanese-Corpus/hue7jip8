@@ -21,7 +21,6 @@ class Command(匯入枋模):
     }
 
     def 全部資料(self, *args, **參數):
-        全部資料 = []
         匯入數量 = 0
         for 一條 in self._全部資料():
             if 一條['來源'] in ['臺灣閩南語常用詞辭典', '台文華文線頂辭典']:
@@ -37,18 +36,15 @@ class Command(匯入枋模):
                 except 解析錯誤 as 錯誤:
                     print(錯誤)
                     continue
-                全部資料.append(
-                    訓練過渡格式(
-                        文本=台語物件.看分詞(),
-                        外文=外文物件.看分詞(),
-                        **self.公家內容
-                    )
+                yield 訓練過渡格式(
+                    文本=台語物件.看分詞(),
+                    外文=外文物件.看分詞(),
+                    **self.公家內容
                 )
 
             匯入數量 += 1
             if 匯入數量 % 1000 == 0:
                 self.stdout.write('匯入 {} 條'.format(匯入數量))
-        return 全部資料
 
     def _全部資料(self):
         conn = HTTPSConnection(self.domain)
