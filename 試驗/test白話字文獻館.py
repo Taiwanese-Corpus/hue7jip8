@@ -6,7 +6,7 @@ from django.core.management import call_command
 class 白話字文獻館試驗(TestCase):
     @classmethod
     def setUpClass(cls):
-        call_command('白話字文獻館')
+        call_command('白話字文獻館', '--錯誤印部份就好')
         return super().setUpClass()
 
     def test句數正確(self):

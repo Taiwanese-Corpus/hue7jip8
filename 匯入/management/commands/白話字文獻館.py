@@ -22,7 +22,16 @@ class Command(匯入枋模):
         '年代': '2010',
     }
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--錯誤印部份就好',
+            action='store_true',
+            help='因為CI有限制輸出4M',
+        )
+
     def 全部資料(self, *args, **參數):
+        self.錯誤全印 = not 參數['錯誤印部份就好']
+
         匯入數量 = 0
         for 台語物件 in self._全部資料():
             yield 訓練過渡格式(
