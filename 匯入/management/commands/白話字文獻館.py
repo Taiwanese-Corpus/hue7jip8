@@ -56,7 +56,11 @@ class Command(匯入枋模):
 
     def 轉物件(self, 漢羅, 羅):
         try:
-            yield 拆文分析器.建立句物件(漢羅, 羅)
+            try:
+                yield 拆文分析器.建立句物件(漢羅, 羅)
+            except ValueError:
+                'https://github.com/i3thuan5/tai5-uan5_gian5-gi2_kang1-ku7/issues/566'
+                raise 解析錯誤(ValueError) 
         except 解析錯誤 as 錯誤:
             if self.錯誤全印:
                 self.stderr.write(錯誤)
