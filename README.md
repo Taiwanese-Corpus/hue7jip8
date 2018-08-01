@@ -54,7 +54,7 @@ python manage.py 詞彙分級
 - 段數：193071段， 其中漢羅128505段、全羅64566段（2018/07/24）
 - 語料：[Github](https://github.com/Taiwanese-Corpus/Ungian_2005_guliau-supin)
 ```
-python manage.py 教育部臺灣閩南語字詞頻調查工作
+python manage.py 台語文語料庫蒐集及語料庫為本台語書面語音節詞頻統計
 ``` 
 
 ### [台語文數位典藏資料庫](https://github.com/Taiwanese-Corpus/nmtl_2006_dadwt)
