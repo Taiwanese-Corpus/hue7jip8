@@ -24,21 +24,17 @@ class Command(匯入枋模):
     )
 
     def 全部資料(self, *args, **參數):
-        全部資料 = []
         匯入數量 = 0
         for 羅馬字, 華語 in self.github資料():
-            全部資料.append(
-                訓練過渡格式(
+            yield 訓練過渡格式(
                     文本=羅馬字,
                     外文=華語,
                     **self.公家內容
                 )
-            )
 
             匯入數量 += 1
             if 匯入數量 % 1000 == 0:
                 self.stdout.write('匯入 {} 筆'.format(匯入數量))
-        return 全部資料
 
     def github資料(self):
         with urlopen(self.github網址) as 檔:

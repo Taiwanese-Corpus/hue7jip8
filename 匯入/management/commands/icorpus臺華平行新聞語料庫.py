@@ -20,7 +20,6 @@ class Command(匯入枋模):
     }
 
     def 全部資料(self, *args, **參數):
-        全部資料 = []
         匯入數量 = 0
         for 一筆 in self._全部資料():
             年代 = 一筆['日期'].split('-')[0]
@@ -31,19 +30,16 @@ class Command(匯入枋模):
                 except 解析錯誤:
                     print(台語, 華語)
                 else:
-                    全部資料.append(
-                        訓練過渡格式(
-                            文本=台語物件.看分詞(),
-                            外文=華語物件.看分詞(),
-                            年代=年代,
-                            **self.公家內容
-                        )
+                    yield 訓練過渡格式(
+                        文本=台語物件.看分詞(),
+                        外文=華語物件.看分詞(),
+                        年代=年代,
+                        **self.公家內容
                     )
 
             匯入數量 += 1
             if 匯入數量 % 100 == 0:
                 self.stdout.write('匯入 {} 筆'.format(匯入數量))
-        return 全部資料
 
     def _全部資料(self):
         with urlopen(self.yaml網址) as 檔:

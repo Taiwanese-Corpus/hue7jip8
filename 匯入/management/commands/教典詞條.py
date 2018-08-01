@@ -35,7 +35,6 @@ class Command(匯入枋模):
     )
 
     def 全部資料(self, *args, **參數):
-        全部資料 = []
         匯入數量 = 0
         for 漢字, 羅馬字 in chain(self.詞目總檔(), self.又見音表()):
             try:
@@ -46,18 +45,15 @@ class Command(匯入枋模):
             except Exception as 錯誤:
                 print(錯誤)
                 continue
-            全部資料.append(
-                訓練過渡格式(
-                    文本=句物件.看分詞(),
-                    種類=字詞抑是語句(句物件),
-                    **self.公家內容
-                )
+            yield 訓練過渡格式(
+                文本=句物件.看分詞(),
+                種類=字詞抑是語句(句物件),
+                **self.公家內容
             )
 
             匯入數量 += 1
             if 匯入數量 % 5000 == 0:
                 self.stdout.write('匯入 {} 筆'.format(匯入數量))
-        return 全部資料
 
     def 詞目總檔(self):
         會使的屬性 = set()
