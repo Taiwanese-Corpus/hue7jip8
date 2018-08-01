@@ -71,6 +71,14 @@ python manage.py 台語文數位典藏資料庫
 - 語料：[Github](https://github.com/Taiwanese-Corpus/Ungian_2009_KIPsupin)
 ```
 python manage.py 教育部臺灣閩南語字詞頻調查工作
+```  
+
+### [白話字文獻館](http://pojbh.lib.ntnu.edu.tw)
+- 形式：漢羅、全羅
+- 段數：43493段，其中31195段對會齊，12298段無法度對齊就用羅馬字（2018/07/31）
+- 語料：[Github](https://github.com/Taiwanese-Corpus/Khin-hoan_2010_pojbh)
+```
+python manage.py 白話字文獻館
 ``` 
 
 ### [台灣植物名彙](http://ip194097.ntcu.edu.tw/memory/TGB/thak.asp?id=59&page=4)
