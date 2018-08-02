@@ -7,7 +7,7 @@ class itaigi試驗(TestCase):
     @classmethod
     def setUpClass(cls):
         call_command('itaigi')
-        return super(itaigi試驗, cls).setUpClass()
+        return super().setUpClass()
 
     def test句數正確(self):
         self.assertGreater(訓練過渡格式.資料數量(), 8000)
