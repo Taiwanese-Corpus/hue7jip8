@@ -2,12 +2,16 @@ from django.core.management import call_command
 from django.test.testcases import TestCase
 from 臺灣言語服務.models import 訓練過渡格式
 from 匯入.management.commands.教典詞條 import Command
+from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
 
 
 class 教典詞條試驗(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        call_command('教典詞條')
+        return super().setUpClass()
 
     def test句數正確(self):
-        call_command('教典詞條')
         self.assertGreater(訓練過渡格式.資料數量(), 25000)
 
     def test切腔口又音(self):
@@ -20,4 +24,25 @@ class 教典詞條試驗(TestCase):
         self.assertEqual(
             Command().tsheh_iuim('ē-kì--tsit、ē-kì--lit、ē-kì--lih、ē-kì--eh'),
             ['ē-kì--tsit', 'ē-kì--lit', 'ē-kì--lih', 'ē-kì--eh']
+        )
+
+    def test主詞條(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('上青苔', 'tshiūnn-tshenn-thî').看分詞()
+            ).exists()
+        )
+
+    def test第二優勢腔(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('上青苔', 'tshiūnn-tshinn-thî').看分詞()
+            ).exists()
+        )
+
+    def test又音(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('上青苔', 'tshiūnn-tshenn-tî').看分詞()
+            ).exists()
         )
