@@ -60,9 +60,9 @@ class Command(匯入枋模):
             yield 拆文分析器.建立句物件(漢羅, 羅)
             return
         except 解析錯誤 as 錯誤:
-            print(錯誤)
+            print(錯誤, file=self.stderr)
         try:
             yield 拆文分析器.建立句物件(羅)
             return
         except 解析錯誤 as 錯誤:
-            print(錯誤)
+            print(錯誤, file=self.stderr)
