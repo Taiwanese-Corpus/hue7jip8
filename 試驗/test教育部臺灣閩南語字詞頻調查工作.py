@@ -11,7 +11,7 @@ class KIPsu試驗(TestCase):
     def setUpClass(cls):
         with io.StringIO() as tshogoo:
             call_command('教育部臺灣閩南語字詞頻調查工作', stderr=tshogoo)
-            print(tshogoo.get_value()[:1000])
+            print(tshogoo.getvalue()[:1000])
         return super().setUpClass()
 
     def test數量(self):
