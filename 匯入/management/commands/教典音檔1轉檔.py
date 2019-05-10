@@ -5,8 +5,6 @@ from posix import listdir
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from libavwrapper.avconv import Input, Output, AVConv
-from libavwrapper.codec import AudioCodec, NO_VIDEO
 from subprocess import run
 
 

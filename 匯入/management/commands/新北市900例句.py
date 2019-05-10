@@ -38,7 +38,6 @@ class Command(匯入枋模):
         if not isfile(暫時檔案):
             urlretrieve(self.網址, 暫時檔案)
         ZipFile(暫時檔案).extractall(語料目錄)
-        匯入數量 = 0
         with TemporaryDirectory() as 轉檔目錄:
             音檔目錄 = join(
                 語料目錄, 'Sin1pak8tshi7_2015_900-le7ku3-master', '鉸好的1-150音檔'
