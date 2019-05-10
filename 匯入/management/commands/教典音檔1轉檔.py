@@ -7,6 +7,7 @@ from django.core.management.base import BaseCommand
 
 from libavwrapper.avconv import Input, Output, AVConv
 from libavwrapper.codec import AudioCodec, NO_VIDEO
+from subprocess import run
 
 
 class Command(BaseCommand):
@@ -31,14 +32,15 @@ class Command(BaseCommand):
             if 檔名.endswith('.mp3'):
                 來源 = join(語料目錄, 檔名)
                 目標 = join(目標目錄, 檔名[:-4] + '.wav')
-                目標聲音格式 = AudioCodec('pcm_s16le')
-                目標聲音格式.channels(1)
-                目標聲音格式.frequence(16000)
-                原始檔案 = Input(來源)
-                網頁檔案 = Output(目標).overwrite()
-                指令 = AVConv('avconv', 原始檔案, 目標聲音格式, NO_VIDEO, 網頁檔案)
-                程序 = 指令.run()
-                程序.wait()
+                run([
+                    'ffmpeg', '-i',
+                    來源,
+                    '-acodec', 'pcm_s16le',
+                    '-ar', '16000',
+                    '-ac', '1',
+                    '-y',
+                    目標,
+                ], check=True)
 
                 匯入數量 += 1
                 if 匯入數量 == 參數['匯入幾筆']:
