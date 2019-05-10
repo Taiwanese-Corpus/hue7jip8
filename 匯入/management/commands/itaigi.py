@@ -11,7 +11,7 @@ from 匯入.指令 import 匯入枋模
 
 class Command(匯入枋模):
     help = 'https://itaigi.tw'
-    domain = 'db.itaigi.tw'
+    domain = 'itaigi.tw'
     網址 = '/匯出資料'
 
     公家內容 = {
