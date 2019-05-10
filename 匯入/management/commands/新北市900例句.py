@@ -30,12 +30,6 @@ class Command(匯入枋模):
             type=int,
             default=44100,
         )
-        parser.add_argument(
-            '--匯入幾筆',
-            type=int,
-            default=100000,
-            help='試驗用，免一擺全匯'
-        )
 
     def 全部資料(self, *args, **參數):
         語料目錄 = join(settings.BASE_DIR, '語料', '新北市900例句')
@@ -73,6 +67,3 @@ class Command(匯入枋模):
                         文本=一逝分詞.strip(),
                         **self.公家內容
                     )
-                    匯入數量 += 1
-                    if 匯入數量 == 參數['匯入幾筆']:
-                        break
