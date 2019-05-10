@@ -3,7 +3,6 @@ from os.path import basename, join, dirname, abspath
 from posix import listdir
 
 from django.conf import settings
-from django.core.management import call_command
 from django.utils import timezone
 
 
@@ -30,8 +29,6 @@ class Command(匯入枋模):
         )
 
     def 全部資料(self, *args, **參數):
-        call_command('顯示資料數量')
-
         'https://github.com/g0v/moedict-data-twblg/tree/master/uni'
         詞目 = {}
         with open(join(
@@ -62,12 +59,10 @@ class Command(匯入枋模):
                     continue
 
                 yield 訓練過渡格式(
-                    影音=音檔路徑,
+                    影音所在=音檔路徑,
                     文本=台語物件.看分詞(),
                     **self.公家內容
                 )
                 匯入數量 += 1
                 if 匯入數量 == 參數['匯入幾筆']:
                     break
-
-        call_command('顯示資料數量')
