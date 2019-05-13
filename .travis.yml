@@ -28,7 +28,7 @@ addons:
     - libav-tools
     - libmp3lame0
 install:
-- sudo apt-get install -y libavcodec-extra-54
+- sudo apt-get install -y libavcodec-extra-54 ffmpeg
 - pip install tox
 - pip install python-coveralls
 branches:
