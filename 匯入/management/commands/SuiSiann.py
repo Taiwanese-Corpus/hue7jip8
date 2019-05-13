@@ -37,7 +37,7 @@ class Command(匯入枋模):
         暫時檔案 = join(語料目錄, 'SuiSiann-0.1.tar')
         if not isfile(暫時檔案):
             makedirs(語料目錄, exist_ok=True)
-            run(['wget', '-O', 暫時檔案, self.網址], check=True)
+            run(['wget', '--quiet', '-O', 暫時檔案, self.網址], check=True)
         TarFile(暫時檔案).extractall(語料目錄)
 
         轉檔所在 = join(
