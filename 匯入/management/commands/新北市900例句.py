@@ -38,31 +38,33 @@ class Command(匯入枋模):
         if not isfile(暫時檔案):
             urlretrieve(self.網址, 暫時檔案)
         ZipFile(暫時檔案).extractall(語料目錄)
-        with TemporaryDirectory() as 轉檔目錄:
-            音檔目錄 = join(
-                語料目錄, 'Sin1pak8tshi7_2015_900-le7ku3-master', '鉸好的1-150音檔'
-            )
-            音檔陣列 = []
-            for 檔名 in sorted(listdir(音檔目錄), key=lambda 名: int(名.split('.')[0])):
-                來源 = join(音檔目錄, 檔名)
-                目標 = join(轉檔目錄, 檔名)
-                run([
-                    'ffmpeg', '-i',
-                    來源,
-                    '-acodec', 'pcm_s16le',
-                    '-ar', '{}'.format(參數['頻率']),
-                    '-ac', '1',
-                    '-y',
-                    目標,
-                ], check=True)
-                音檔陣列.append(目標)
+        音檔目錄 = join(
+            語料目錄, 'Sin1pak8tshi7_2015_900-le7ku3-master', '鉸好的1-150音檔'
+        )
+        轉檔目錄 = join(
+            語料目錄, 'Sin1pak8tshi7_2015_900-le7ku3-master', '鉸好的1-150音檔-轉好'
+        )
+        音檔陣列 = []
+        for 檔名 in sorted(listdir(音檔目錄), key=lambda 名: int(名.split('.')[0])):
+            來源 = join(音檔目錄, 檔名)
+            目標 = join(轉檔目錄, 檔名)
+            run([
+                'ffmpeg', '-i',
+                來源,
+                '-acodec', 'pcm_s16le',
+                '-ar', '{}'.format(參數['頻率']),
+                '-ac', '1',
+                '-y',
+                目標,
+            ], check=True)
+            音檔陣列.append(目標)
 
-            with open(
-                join(語料目錄, 'Sin1pak8tshi7_2015_900-le7ku3-master', 'minnan900.分詞')
-            ) as 分詞檔案:
-                for 一逝分詞, 音檔路徑 in zip(分詞檔案.readlines(), 音檔陣列):
-                    yield 訓練過渡格式(
-                        影音所在=音檔路徑,
-                        文本=一逝分詞.strip(),
-                        **self.公家內容
-                    )
+        with open(
+            join(語料目錄, 'Sin1pak8tshi7_2015_900-le7ku3-master', 'minnan900.分詞')
+        ) as 分詞檔案:
+            for 一逝分詞, 音檔路徑 in zip(分詞檔案.readlines(), 音檔陣列):
+                yield 訓練過渡格式(
+                    影音所在=音檔路徑,
+                    文本=一逝分詞.strip(),
+                    **self.公家內容
+                )
