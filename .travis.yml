@@ -5,7 +5,7 @@ python:
 - '3.5'
 env:
 - TOX_ENV=flake8
-- TOX_ENV=e-dictionary.apc
+# - TOX_ENV=e-dictionary.apc
 - TOX_ENV=moedict-twblg
 - TOX_ENV=sin1pak8tshi7-900-le7ku3
 - TOX_ENV=taihoa-dictionary
@@ -20,24 +20,18 @@ env:
 - TOX_ENV=白話字文獻館
 - TOX_ENV=台灣植物名彙
 - TOX_ENV=台灣白話基礎語句
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-    - libav-tools
-    - libmp3lame0
+services:
+- docker
 install:
-- sudo apt-get install -y libavcodec-extra-54
-- pip install tox
 - pip install python-coveralls
 branches:
   only:
   - master
   - "/\\d+\\.\\d+\\.\\d+/"
 script:
-- tox -e $TOX_ENV
+- docker build -t travis --build-arg TOX_ENV=$TOX_ENV .
 after_success:
+- docker run --rm travis cat .coverage > .coverage
 - coverage report
 - coveralls
 deploy:
