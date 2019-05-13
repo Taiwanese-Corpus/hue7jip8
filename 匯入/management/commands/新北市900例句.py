@@ -2,7 +2,6 @@ from os import makedirs
 from os.path import join, isfile
 from posix import listdir
 from subprocess import run
-from tempfile import TemporaryDirectory
 from urllib.request import urlretrieve
 from zipfile import ZipFile
 
