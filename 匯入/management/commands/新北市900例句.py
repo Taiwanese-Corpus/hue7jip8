@@ -44,6 +44,7 @@ class Command(匯入枋模):
         轉檔目錄 = join(
             語料目錄, 'Sin1pak8tshi7_2015_900-le7ku3-master', '鉸好的1-150音檔-轉好'
         )
+        makedirs(轉檔目錄, exist_ok=True)
         音檔陣列 = []
         for 檔名 in sorted(listdir(音檔目錄), key=lambda 名: int(名.split('.')[0])):
             來源 = join(音檔目錄, 檔名)
