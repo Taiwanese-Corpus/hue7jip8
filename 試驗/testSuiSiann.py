@@ -1,14 +1,13 @@
-import io
-
 from django.core.management import call_command
 from django.test.testcases import TestCase
 from 臺灣言語服務.models import 訓練過渡格式
+from tempfile import TemporaryFile
 
 
 class 媠聲試驗(TestCase):
     @classmethod
     def setUpClass(cls):
-        with io.StringIO() as tsiling:
+        with TemporaryFile('wt') as tsiling:
             call_command('SuiSiann', stdout=tsiling, stderr=tsiling)
         return super().setUpClass()
 
