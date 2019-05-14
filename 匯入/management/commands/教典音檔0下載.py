@@ -1,5 +1,6 @@
 from os.path import join, dirname, abspath
 
+from django.conf import settings
 from django.core.management.base import BaseCommand
 
 
@@ -24,6 +25,6 @@ class Command(BaseCommand):
             '下載臺語教典音檔-{}.sh'.format(參數['下載方式'])
         )
         語料目錄 = join(
-            專案路徑, '語料', '教育部閩南語常用詞辭典'
+            settings.BASE_DIR, '語料', '教育部閩南語常用詞辭典'
         )
         程式腳本._走指令(['bash', 腳本路徑, 語料目錄], 愛直接顯示輸出=True)
