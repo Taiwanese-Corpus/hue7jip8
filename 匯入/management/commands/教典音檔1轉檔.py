@@ -31,8 +31,9 @@ class Command(BaseCommand):
                 來源 = join(語料目錄, 檔名)
                 目標 = join(目標目錄, 檔名[:-4] + '.wav')
                 run([
-                    'ffmpeg', '-i',
-                    來源,
+                    'ffmpeg',
+                    '-f', 'mp3',
+                    '-i', 來源,
                     '-acodec', 'pcm_s16le',
                     '-ar', '16000',
                     '-ac', '1',
