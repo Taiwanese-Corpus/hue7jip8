@@ -6,7 +6,8 @@ from 臺灣言語服務.models import 訓練過渡格式
 class 媠聲試驗(TestCase):
     @classmethod
     def setUpClass(cls):
-        call_command('SuiSiann')
+        with io.StringIO() as tsiling:
+            call_command('SuiSiann', stdout=tsiling, stderr=tsiling)
         return super().setUpClass()
 
     def test句數正確(self):

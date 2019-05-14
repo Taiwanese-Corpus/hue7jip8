@@ -37,7 +37,10 @@ class Command(匯入枋模):
         暫時檔案 = join(語料目錄, 'SuiSiann-0.1.tar')
         if not isfile(暫時檔案):
             makedirs(語料目錄, exist_ok=True)
-            run(['wget', '--quiet', '-O', 暫時檔案, self.網址], check=True)
+            run(
+                ['wget', '-O', 暫時檔案, self.網址],
+                stdout=self.stdout, stderr=self.stderr, check=True
+            )
         TarFile(暫時檔案).extractall(語料目錄)
 
         轉檔所在 = join(
@@ -54,6 +57,7 @@ class Command(匯入枋模):
         for 檔名 in sorted(listdir(音檔目錄)):
             來源 = join(音檔目錄, 檔名)
             目標 = join(轉檔目錄, 檔名)
+            print(來源)
             run([
                 'ffmpeg', '-i',
                 來源,
@@ -62,7 +66,7 @@ class Command(匯入枋模):
                 '-ac', '1',
                 '-y',
                 目標,
-            ], check=True)
+            ], stdout=self.stdout, stderr=self.stderr, check=True)
             音檔陣列.append(目標)
 
         with open(
