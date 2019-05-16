@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 from os import walk
 import os
 import sys
@@ -31,8 +31,9 @@ setup(
     name='hue7jip8',
     packages=揣工具包('匯入'),
     version=版本,
-    description='臺灣語言服務',
+    description='匯入臺灣語料',
     long_description=讀('README.md'),
+    long_description_content_type="text/markdown",
     author='薛丞宏',
     author_email='ihcaoe@gmail.com',
     url='https://xn--v0qr21b.xn--kpry57d/',
