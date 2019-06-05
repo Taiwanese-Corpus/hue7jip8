@@ -46,3 +46,24 @@ class 教典詞條試驗(TestCase):
                 文本=拆文分析器.建立句物件('上青苔', 'tshiūnn-tshenn-tî').看分詞()
             ).exists()
         )
+
+    def test詞luī方言差(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('面巾', 'bīn-kirn').看分詞()
+            ).exists()
+        )
+
+    def test詞luī方言差2ê做伙(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('病院', 'pǐnn-ǐnn').看分詞()
+            ).exists()
+        )
+
+    def test詞luī方言差日語莫(self):
+        self.assertFalse(
+            訓練過渡格式.objects.filter(
+                文本__contains='にんじん'
+            ).exists()
+        )
