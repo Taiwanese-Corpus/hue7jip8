@@ -114,8 +114,9 @@ class Command(匯入枋模):
                         if row[khiunn].strip() == '暫無資料':
                             continue
                         for su in row[khiunn].split(','):
-                            han, lo = su.strip().split('\u3000')
-                            yield han, lo
+                            han, lo_tsuliau = su.strip().split('\u3000')
+                            for lo in lo_tsuliau.split(';'):
+                                yield han, lo.strip()
 
     def 漢字語音方言差表(self):
         with urlopen(self.漢字語音網址) as 檔:
