@@ -116,7 +116,7 @@ class Command(匯入枋模):
                         for su in row[khiunn].split(','):
                             han, lo_tsuliau = su.strip().split('\u3000')
                             for lo in lo_tsuliau.split(';'):
-                                yield han, lo.strip()
+                                yield han.strip('.'), lo.strip().strip('.')
 
     def 漢字語音方言差表(self):
         with urlopen(self.漢字語音網址) as 檔:

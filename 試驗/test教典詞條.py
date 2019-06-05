@@ -75,6 +75,13 @@ class 教典詞條試驗(TestCase):
             ).exists()
         )
 
+    def test詞luī方言差一堆點(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('咪咪', 'bi̋-bi').看分詞()
+            ).exists()
+        )
+
     def test漢字方言差(self):
         self.assertTrue(
             訓練過渡格式.objects.filter(
