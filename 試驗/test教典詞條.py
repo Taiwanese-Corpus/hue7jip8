@@ -67,3 +67,24 @@ class 教典詞條試驗(TestCase):
                 文本__contains='ガラ油'
             ).exists()
         )
+
+    def test漢字方言差(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('予', 'hǒo').看分詞()
+            ).exists()
+        )
+
+    def test漢字方言差_2ê分號隔開(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('反', 'puínn').看分詞()
+            ).exists()
+        )
+
+    def test漢字方言差_提掉解說(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('濟', 'tserē').看分詞()
+            ).exists()
+        )

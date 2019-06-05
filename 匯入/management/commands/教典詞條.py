@@ -36,10 +36,15 @@ class Command(匯入枋模):
     詞luī網址 = (
         github網址 + '%E8%A9%9E%E5%BD%99%E6%96%B9%E8%A8%80%E5%B7%AE.csv'
     )
+    漢字語音網址 = (
+        github網址 + '%E8%AA%9E%E9%9F%B3%E6%96%B9%E8%A8%80%E5%B7%AE.csv'
+    )
 
     def 全部資料(self, *args, **參數):
         匯入數量 = 0
-        for 漢字, 羅馬字 in chain(self.詞目總檔(), self.又見音表(), self.詞luī表()):
+        for 漢字, 羅馬字 in chain(
+            self.詞目總檔(), self.又見音表(), self.詞luī表(), self.漢字語音方言差表()
+        ):
             try:
                 if 羅馬字 != '':
                     句物件 = 拆文分析器.建立句物件(漢字, 羅馬字)
@@ -110,6 +115,15 @@ class Command(匯入枋模):
                         for su in row[khiunn].split(','):
                             han, lo = su.strip().split('\u3000')
                             yield han, lo
+
+    def 漢字語音方言差表(self):
+        with urlopen(self.漢字語音網址) as 檔:
+            with io.StringIO(檔.read().decode()) as 字串資料:
+                for row in DictReader(字串資料):
+                    for khiunn in ['鹿港', '三峽', '臺北', '宜蘭', '臺南', '高雄', '金門', '馬公', '新竹', '臺中']:
+                        han = row['字目'][0]
+                        for lo in row[khiunn].split(';'):
+                            yield han, lo.strip()
 
     _tsheh = re.compile('[、/]')
 
