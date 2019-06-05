@@ -61,9 +61,9 @@ class 教典詞條試驗(TestCase):
             ).exists()
         )
 
-    def test詞luī方言差日語莫(self):
+    def test詞luī方言差日語kâng長度莫(self):
         self.assertFalse(
             訓練過渡格式.objects.filter(
-                文本__contains='にんじん'
+                文本__contains='ガラ油'
             ).exists()
         )
