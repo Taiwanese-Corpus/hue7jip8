@@ -1,7 +1,7 @@
 from os import makedirs
 from os.path import join, isfile
 from posix import listdir
-from subprocess import run
+from subprocess import run, PIPE
 
 from django.conf import settings
 
@@ -39,7 +39,7 @@ class Command(匯入枋模):
             makedirs(語料目錄, exist_ok=True)
             run(
                 ['wget', '-O', 暫時檔案, self.網址],
-                stdout=self.stdout, stderr=self.stderr, check=True
+                stdout=PIPE, stderr=PIPE, check=True
             )
         TarFile(暫時檔案).extractall(語料目錄)
 
@@ -58,15 +58,18 @@ class Command(匯入枋模):
             來源 = join(音檔目錄, 檔名)
             目標 = join(轉檔目錄, 檔名)
             print(來源)
-            run([
-                'ffmpeg', '-i',
-                來源,
-                '-acodec', 'pcm_s16le',
-                '-ar', '{}'.format(參數['頻率']),
-                '-ac', '1',
-                '-y',
-                目標,
-            ], stdout=self.stdout, stderr=self.stderr, check=True)
+            run(
+                [
+                    'ffmpeg', '-i',
+                    來源,
+                    '-acodec', 'pcm_s16le',
+                    '-ar', '{}'.format(參數['頻率']),
+                    '-ac', '1',
+                    '-y',
+                    目標,
+                ],
+                stdout=PIPE, stderr=PIPE, check=True
+            )
             音檔陣列.append(目標)
 
         with open(

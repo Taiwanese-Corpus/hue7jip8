@@ -46,3 +46,59 @@ class 教典詞條試驗(TestCase):
                 文本=拆文分析器.建立句物件('上青苔', 'tshiūnn-tshenn-tî').看分詞()
             ).exists()
         )
+
+    def test詞luī方言差(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('面巾', 'bīn-kirn').看分詞()
+            ).exists()
+        )
+
+    def test詞luī方言差2ê做伙(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('病院', 'pǐnn-ǐnn').看分詞()
+            ).exists()
+        )
+
+    def test詞luī方言差日語kâng長度莫(self):
+        self.assertFalse(
+            訓練過渡格式.objects.filter(
+                文本__contains='ガラ油'
+            ).exists()
+        )
+
+    def test詞luī方言差2ê羅馬字(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('冰雹', 'ping-pha̍uh').看分詞()
+            ).exists()
+        )
+
+    def test詞luī方言差一堆點(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('咪咪', 'bi̋-bi').看分詞()
+            ).exists()
+        )
+
+    def test漢字方言差(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('予', 'hǒo').看分詞()
+            ).exists()
+        )
+
+    def test漢字方言差_2ê分號隔開(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('反', 'puínn').看分詞()
+            ).exists()
+        )
+
+    def test漢字方言差_提掉解說(self):
+        self.assertTrue(
+            訓練過渡格式.objects.filter(
+                文本=拆文分析器.建立句物件('濟', 'tserē').看分詞()
+            ).exists()
+        )
