@@ -39,7 +39,7 @@ class Command(匯入枋模):
             makedirs(語料目錄, exist_ok=True)
             run(
                 ['wget', '-O', 暫時檔案, self.網址],
-                stdout=PIPE, stderr=PIPE, check=True
+                check=True
             )
         TarFile(暫時檔案).extractall(語料目錄)
 
@@ -66,7 +66,7 @@ class Command(匯入枋模):
                 '-ac', '1',
                 '-y',
                 目標,
-            ], stdout=self.stdout, stderr=self.stderr, check=True)
+            ], stdout=PIPE, stderr=PIPE, check=True)
             音檔陣列.append(目標)
 
         with open(
