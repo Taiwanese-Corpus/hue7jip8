@@ -1,7 +1,7 @@
 from os import makedirs
 from os.path import join, isfile
 from posix import listdir
-from subprocess import run
+from subprocess import run, PIPE
 
 from django.conf import settings
 
@@ -39,7 +39,7 @@ class Command(匯入枋模):
             makedirs(語料目錄, exist_ok=True)
             run(
                 ['wget', '-O', 暫時檔案, self.網址],
-                stdout=self.stdout, stderr=self.stderr, check=True
+                stdout=PIPE, stderr=PIPE, check=True
             )
         TarFile(暫時檔案).extractall(語料目錄)
 
