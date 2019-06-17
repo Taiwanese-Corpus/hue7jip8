@@ -21,6 +21,7 @@ env:
 - TOX_ENV=白話字文獻館
 - TOX_ENV=台灣植物名彙
 - TOX_ENV=台灣白話基礎語句
+- TOX_ENV=台語數字
 services:
 - docker
 install:
