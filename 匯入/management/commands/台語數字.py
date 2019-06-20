@@ -4,12 +4,8 @@ from urllib.request import urlopen
 
 
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
-from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 from 臺灣言語服務.models import 訓練過渡格式
-from 匯入.教典 import 字詞抑是語句
 from 匯入.指令 import 匯入枋模
-from json.decoder import _decode_uXXXX
-from 臺灣言語工具.正規.阿拉伯數字 import 阿拉伯數字
 
 
 class Command(匯入枋模):
