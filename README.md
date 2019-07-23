@@ -83,7 +83,7 @@ python manage.py 白話字文獻館
 
 ### [台灣植物名彙](http://ip194097.ntcu.edu.tw/memory/TGB/thak.asp?id=59&page=4)
 - 形式：羅馬字、華語漢字
-- 句數：354詞（2018/07/24）
+- 句數：1770詞（2019/07/22）
 - 語料：[Github](https://github.com/Taiwanese-Corpus/Syuniti-Sasaki_1928_List-of-Plants-of-Formosa)
 ```
 python manage.py 台灣植物名彙
@@ -92,7 +92,7 @@ python manage.py 台灣植物名彙
 
 ### [台灣白話基礎語句](http://ip194097.ntcu.edu.tw/memory/TGB/thak.asp?id=862)
 - 形式：羅馬字、華語漢字
-- 句數：61354詞翻譯對照（2018/07/24）
+- 句數：6515詞翻譯對照（2019/07/22）
 - 語料：[Github](https://github.com/Taiwanese-Corpus/Ko-Chek-hoan-Tan-Pang-tin_1956_Basic-Vocabulary-for-Colloquial-Taiwanese)
 ```
 python manage.py 台灣白話基礎語句
