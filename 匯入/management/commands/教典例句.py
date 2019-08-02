@@ -4,7 +4,6 @@ from urllib.request import urlopen
 
 
 from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
-from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音 import 臺灣閩南語羅馬字拼音
 from 臺灣言語服務.models import 訓練過渡格式
 from 匯入.教典 import 字詞抑是語句
 from 匯入.指令 import 匯入枋模
@@ -47,7 +46,6 @@ class Command(匯入枋模):
                         句物件 = (
                             拆文分析器
                             .對齊句物件(漢字, 羅馬字)
-                            .轉音(臺灣閩南語羅馬字拼音)
                         )
                     except Exception as 錯誤:
                         print(row)
