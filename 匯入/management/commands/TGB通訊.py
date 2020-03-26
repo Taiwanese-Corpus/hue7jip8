@@ -7,10 +7,12 @@ from 臺灣言語服務.models import 訓練過渡格式
 from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音相容教會羅馬字音標 import 臺灣閩南語羅馬字拼音相容教會羅馬字音標
 from 臺灣言語工具.解析整理.解析錯誤 import 解析錯誤
 from 匯入.指令 import 匯入枋模
+from 臺灣言語工具.基本物件.公用變數 import 無音
 
 
 class Command(匯入枋模):
-    help = '原網站：http://taioanchouhap.pixnet.net/blog。Sîng-hông 2014整理的台華平行版本'
+    help = '''原網站：http://taioanchouhap.pixnet.net/blog。Sîng-hông 2014整理的台華平行版本。
+    工具需要0.6.40較舊ê版本'''
     台文網址 = 'https://github.com/sih4sing5hong5/huan1-ik8_gian2-kiu3/raw/master/語料/TGB/對齊平行閩南語資料'
     華文網址 = 'https://github.com/sih4sing5hong5/huan1-ik8_gian2-kiu3/raw/master/語料/TGB/對齊平行華語資料'
 
@@ -24,6 +26,9 @@ class Command(匯入枋模):
         for 台語, 華語 in self._全部資料():
             try:
                 台語物件 = 拆文分析器.分詞句物件(台語).轉音(臺灣閩南語羅馬字拼音相容教會羅馬字音標)
+                for 字 in 台語物件.篩出字物件():
+                    if 字.音 == 無音:
+                        字.音 = 字.型
                 華語物件 = 拆文分析器.建立句物件(華語)
             except 解析錯誤 as 錯誤:
                 print(台語, 華語, 錯誤)
